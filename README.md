@@ -68,7 +68,7 @@ This keeps it fast, free to host, and easy for anyone to audit or contribute to.
 
 ## About the Creator
 
-CV STEM Guide was built by a high school student from Modesto, California. Growing up in the Central Valley and seeing firsthand how few STEM resources were visible or accessible to local students, the goal was simple: build the resource that should have already existed.
+CV STEM Guide was built by a high school student from Patterson, California. Growing up in the Central Valley and seeing firsthand how few STEM resources were visible or accessible to local students, the goal was simple: build the resource that should have already existed.
 
 If this site helped you find a program or scholarship, consider sharing it with a classmate, a school counselor, or a local library. The more students who know it exists, the more useful it becomes.
 
