@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Central Valley STEM Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,500&family=Mulish:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%231a6fa8'/><text y='72' x='50' text-anchor='middle' font-size='62' font-family='serif' fill='%23f0c96a' font-weight='bold'>CV</text></svg>">
+<style>
+  :root {
+    --sky: #1a6fa8;
+    --sky-dark: #0f4f7a;
+    --sky-light: #e8f3fb;
+    --gold: #b8892a;
+    --gold-light: #fdf6e7;
+    --green: #2d7a4f;
+    --green-light: #edf7f2;
+    --rose: #9b3a5c;
+    --rose-light: #fdf0f5;
+    --amber: #c47a2a;
+    --ink: #1a1a2e;
+    --ink-muted: #4a5568;
+    --ink-faint: #8a9ab5;
+    --surface: #f7f8fa;
+    --white: #ffffff;
+    --border: #dde3ec;
+    --radius: 10px;
+    --radius-sm: 6px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Mulish', sans-serif; background: var(--surface); color: var(--ink); line-height: 1.65; font-weight: 400; }
+
+  nav {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: var(--ink);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: 0em;
+  }
+  .logo-accent { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
+  .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--ink-muted);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.15s;
+  }
+  .nav-links a:hover { color: var(--sky); }
+
+  .hero {
+    position: relative;
+    min-height: 580px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, rgba(15,30,55,0.9) 0%, rgba(15,30,55,0.6) 55%, rgba(15,30,55,0.25) 100%);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 5rem 2.5rem;
+    max-width: 680px;
+  }
+  .hero-eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: 0.06em;
+    color: #f0c96a;
+    margin-bottom: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: #f0c96a; }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: clamp(2.8rem, 5.5vw, 4.4rem);
+    color: var(--white);
+    line-height: 1.06;
+    margin-bottom: 1.4rem;
+    letter-spacing: -0.01em;
+  }
+  .hero h1 em { font-style: italic; color: #f0c96a; }
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.18rem;
+    color: rgba(255,255,255,0.82);
+    max-width: 500px;
+    margin-bottom: 2.2rem;
+    font-weight: 400;
+    line-height: 1.7;
+  }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--sky);
+    color: white;
+    padding: 13px 30px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.15s, transform 0.1s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--sky-dark); transform: translateY(-1px); }
+  .btn-ghost {
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.4);
+    padding: 13px 30px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: border-color 0.15s, transform 0.1s;
+    display: inline-block;
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.7); transform: translateY(-1px); }
+
+  .stats-bar {
+    background: var(--ink);
+    padding: 1.5rem 2.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 2.1rem;
+    color: #f0c96a;
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.5);
+    font-weight: 400;
+    font-style: italic;
+    margin-top: 3px;
+  }
+
+  .container { max-width: 1120px; margin: 0 auto; padding: 0 1.75rem; }
+  section { padding: 3.5rem 0; }
+  .section-header { margin-bottom: 2rem; }
+  .section-tag {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-tag::before { content: ''; display: block; width: 20px; height: 1px; background: var(--gold); }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 2rem;
+    color: var(--ink);
+    letter-spacing: 0em;
+    line-height: 1.15;
+  }
+  .section-sub { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--ink-muted); margin-top: 0.5rem; font-weight: 400; font-style: italic; }
+
+  .photo-strip {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 8px;
+    height: 260px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+  }
+  .photo-strip > img, .sub-photos img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    display: block;
+  }
+  .photo-strip > img:hover, .sub-photos img:hover { transform: scale(1.04); }
+  .sub-photos { display: grid; grid-template-rows: 1fr 1fr; gap: 8px; overflow: hidden; }
+
+  .filter-bar { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .filter-btn {
+    padding: 6px 18px;
+    border-radius: 3px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    border: 1px solid var(--border);
+    background: var(--white);
+    color: var(--ink-muted);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .filter-btn:hover, .filter-btn.active { background: var(--sky); border-color: var(--sky); color: white; }
+
+  .search-wrap { margin-bottom: 1.5rem; }
+  .search-input {
+    width: 100%;
+    max-width: 440px;
+    padding: 10px 16px 10px 42px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 0.88rem;
+    font-family: 'Mulish', sans-serif;
+    background: var(--white);
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.15s;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238a9ab5' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: 14px center;
+  }
+  .search-input:focus { border-color: var(--sky); }
+
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1rem; }
+  .program-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.4rem;
+    transition: box-shadow 0.2s, transform 0.15s;
+    display: flex;
+    flex-direction: column;
+  }
+  .program-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.07); transform: translateY(-2px); }
+  .card-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 0.85rem; gap: 12px; }
+  .card-icon { width: 42px; height: 42px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; background: var(--surface); }
+  .card-badges { display: flex; flex-wrap: wrap; gap: 4px; }
+  .badge { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; padding: 2px 8px; border-radius: 3px; white-space: nowrap; }
+  .badge-free { background: var(--green-light); color: var(--green); }
+  .badge-online { background: var(--sky-light); color: var(--sky-dark); }
+  .badge-residential { background: #f3f0fb; color: #5b3da8; }
+  .badge-paid { background: var(--gold-light); color: var(--amber); }
+  .badge-competition { background: #fef9e7; color: #8a6a00; }
+  .badge-scholarship { background: var(--rose-light); color: var(--rose); }
+  .card-title { font-family: 'Playfair Display', serif; font-weight: 600; font-size: 1.1rem; color: var(--ink); margin-bottom: 0.25rem; line-height: 1.3; }
+  .card-org { font-size: 0.7rem; color: var(--ink-faint); margin-bottom: 0.7rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+  .card-desc { font-size: 0.84rem; color: var(--ink-muted); line-height: 1.65; flex: 1; margin-bottom: 1rem; font-weight: 300; }
+  .card-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 1rem; font-size: 0.74rem; color: var(--ink-muted); padding-top: 0.75rem; border-top: 1px solid var(--border); }
+  .card-link { display: block; text-align: center; background: var(--sky); border-radius: var(--radius-sm); padding: 9px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: white; text-decoration: none; transition: background 0.15s; margin-top: auto; }
+  .card-link:hover { background: var(--sky-dark); }
+
+  .county-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); gap: 7px; }
+  .county-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 13px 15px; cursor: pointer; transition: all 0.15s; text-align: center; }
+  .county-card:hover, .county-card.active { border-color: var(--sky); background: var(--sky-light); }
+  .county-name { font-family: 'Playfair Display', serif; font-weight: 500; font-size: 0.95rem; color: var(--ink); }
+  .county-count { font-size: 0.68rem; color: var(--ink-faint); margin-top: 2px; font-weight: 500; }
+
+  .feature-banner { position: relative; border-radius: var(--radius); overflow: hidden; height: 210px; margin-bottom: 2.5rem; }
+  .feature-banner img { width: 100%; height: 100%; object-fit: cover; object-position: center 55%; }
+  .feature-banner-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(15,30,55,0.85) 0%, rgba(15,30,55,0.3) 100%); display: flex; align-items: center; padding: 2rem; }
+  .feature-banner-text h2 { font-family: 'Playfair Display', serif; font-size: 1.75rem; font-weight: 600; color: white; margin-bottom: 0.5rem; line-height: 1.2; }
+  .feature-banner-text p { font-size: 0.86rem; color: rgba(255,255,255,0.7); font-weight: 300; max-width: 420px; line-height: 1.65; }
+
+  .tips-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1rem; }
+  .tip-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; position: relative; overflow: hidden; }
+  .tip-num { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 700; color: var(--border); line-height: 1; position: absolute; top: 0.8rem; right: 1rem; }
+  .tip-title { font-family: 'Playfair Display', serif; font-weight: 600; font-size: 1.05rem; margin-bottom: 0.5rem; color: var(--ink); padding-right: 3.5rem; line-height: 1.25; }
+  .tip-text { font-size: 0.83rem; color: var(--ink-muted); line-height: 1.7; font-weight: 300; }
+
+  footer { background: var(--ink); color: rgba(255,255,255,0.38); padding: 3rem 2.5rem 2rem; margin-top: 4rem; text-align: center; }
+  .footer-logo { font-family: 'Playfair Display', serif; font-weight: 600; font-size: 1.55rem; color: white; margin-bottom: 0.75rem; letter-spacing: 0.01em; }
+  footer p { font-size: 0.83rem; max-width: 460px; margin: 0 auto 1.5rem; line-height: 1.75; font-weight: 300; }
+  .footer-note { font-size: 0.74rem; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.5rem; margin-top: 1.5rem; }
+
+  .divider { border: none; border-top: 1px solid var(--border); }
+
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .stats-bar { gap: 2rem; }
+    .photo-strip { grid-template-columns: 1fr; height: auto; }
+    .photo-strip > img:first-child { height: 200px; }
+    .sub-photos { grid-template-rows: unset; grid-template-columns: 1fr 1fr; }
+    .sub-photos img { height: 130px; }
+    .hero { min-height: 480px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo"><div class="logo-accent"></div>CV STEM Guide</a>
+  <ul class="nav-links">
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#scholarships">Scholarships</a></li>
+    <li><a href="#competitions">Competitions</a></li>
+    <li><a href="#tips">Tips</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <img class="hero-img" src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1600&q=85" alt="Wide open sky and fields">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Built for the Central Valley</div>
+    <h1>Your future in STEM<br>starts <em>right here.</em></h1>
+    <p class="hero-sub">A free guide connecting students across 18 Central Valley counties to real programs, scholarships, and competitions. No cost. No sign-up. Just opportunities.</p>
+    <div class="hero-actions">
+      <a href="#programs" class="btn-primary">Browse Programs</a>
+      <a href="#scholarships" class="btn-ghost">Find Scholarships</a>
+    </div>
+  </div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">18</div><div class="stat-label">Counties Covered</div></div>
+  <div class="stat"><div class="stat-num">30+</div><div class="stat-label">Programs Listed</div></div>
+  <div class="stat"><div class="stat-num">$500K+</div><div class="stat-label">In Scholarships</div></div>
+  <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Free to Use</div></div>
+</div>
+
+<section id="counties">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Browse by Location</div>
+      <div class="section-title">Your County</div>
+      <div class="section-sub">Click your county to filter programs and scholarships available near you</div>
+    </div>
+    <div class="photo-strip">
+      <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1000&q=85" alt="Golden farmland at sunset">
+      <div class="sub-photos">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=85" alt="Student working on laptop">
+        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=85" alt="Students in class">
+      </div>
+    </div>
+    <div class="county-grid" id="county-grid"></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="programs">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Summer and Year-Round</div>
+      <div class="section-title">STEM Programs</div>
+      <div class="section-sub">Free and paid programs for grades 6 through 12 across the Central Valley and California</div>
+    </div>
+    <div class="search-wrap">
+      <input type="text" class="search-input" id="prog-search" placeholder="Search programs, topics, grades..." oninput="filterCards()">
+    </div>
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="setFilter('all',this)">All</button>
+      <button class="filter-btn" onclick="setFilter('free',this)">Free</button>
+      <button class="filter-btn" onclick="setFilter('aerospace',this)">Aerospace</button>
+      <button class="filter-btn" onclick="setFilter('engineering',this)">Engineering</button>
+      <button class="filter-btn" onclick="setFilter('online',this)">Online</button>
+      <button class="filter-btn" onclick="setFilter('residential',this)">Residential</button>
+    </div>
+    <div class="card-grid" id="programs-grid"></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="scholarships">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Money for College</div>
+      <div class="section-title">Scholarships</div>
+      <div class="section-sub">Scholarships specifically for Central Valley students going into STEM fields</div>
+    </div>
+    <div class="feature-banner">
+      <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1400&q=85" alt="University campus quad">
+      <div class="feature-banner-overlay">
+        <div class="feature-banner-text">
+          <h2>Over $500,000 waiting to be claimed</h2>
+          <p>Most of these scholarships go underutilized simply because students do not know they exist. That is exactly why this page is here.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-grid" id="scholarships-grid"></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="competitions">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Stand Out</div>
+      <div class="section-title">Competitions</div>
+      <div class="section-sub">Competitions that carry real weight on college applications. Many are free to enter.</div>
+    </div>
+    <div class="feature-banner">
+      <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=1400&q=85" alt="Science and engineering lab">
+      <div class="feature-banner-overlay">
+        <div class="feature-banner-text">
+          <h2>Compete. Build. Get noticed.</h2>
+          <p>A real competition result shows colleges what you are capable of far better than a club membership ever could.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-grid" id="competitions-grid"></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="tips">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Straight Talk</div>
+      <div class="section-title">How to Actually Get In</div>
+      <div class="section-sub">Real advice on making the most of these opportunities for college applications</div>
+    </div>
+    <div class="tips-grid" id="tips-grid"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Central Valley STEM Guide</div>
+  <p>A free resource built by a Patterson student for students across the Central Valley. No ads, no sign-ups, no cost. Just opportunities for everyone.</p>
+  <div class="footer-note">
+    Know a program that should be listed? Email <strong style="color:rgba(255,255,255,0.55)">jnzoule@gmail.com</strong> &nbsp;&middot;&nbsp; Updated April 2026
+  </div>
+</footer>
+
+<script>
+const COUNTIES = ["Butte","Colusa","Fresno","Glenn","Kern","Kings","Madera","Merced","Placer","Sacramento","San Joaquin","Shasta","Stanislaus","Sutter","Tehama","Tulare","Yolo","Yuba"];
+
+const PROGRAMS = [
+  { icon:"🚀", title:"COSMOS — California Summer School for Math and Science", org:"University of California System",
+    desc:"A four-week residential program at UC Davis, UC Merced, UCLA, UC Irvine, UC San Diego, or UC Santa Cruz. Students work directly with UC faculty on real STEM research. It is one of California's most respected pre-college programs and a genuinely transformative experience for anyone serious about STEM.",
+    grades:"8 to 12", cost:"Free with need-based aid available", timing:"Summer, July through August",
+    tags:["free","residential","engineering","aerospace"], link:"https://cosmos-ucop.ucdavis.edu/", badges:["free","residential"], counties:"all" },
+  { icon:"✈️", title:"NASA High School Aerospace Scholars", org:"NASA Johnson Space Center",
+    desc:"A free online course where top participants earn an in-person invitation to NASA's Johnson Space Center. Students complete real aerospace engineering design challenges guided by NASA mentors throughout. One of the most respected aerospace-specific programs available to any high schooler in the country.",
+    grades:"11", cost:"Free", timing:"Fall online, Spring on-site",
+    tags:["free","aerospace","online","engineering"], link:"https://www.nasa.gov/learning-resources/high-school-aerospace-scholars/", badges:["free","online"], counties:"all" },
+  { icon:"🌌", title:"Summer Science Program — Astrophysics", org:"Summer Science Program",
+    desc:"A five-week residential program where student teams actually calculate asteroid orbits using real telescope observations. Need-based aid frequently brings the cost down to zero. It is one of the most selective and well-regarded pre-college STEM experiences in the United States.",
+    grades:"10 to 12", cost:"Up to $9,800 — need-based aid often brings it to zero", timing:"Late June through Early August",
+    tags:["free","residential","aerospace"], link:"https://summerscience.org/", badges:["residential"], counties:"all" },
+  { icon:"🛩️", title:"UCLA Summer Springboard — Aerospace Engineering", org:"UCLA / Springboard",
+    desc:"A hands-on aerospace engineering program held on UCLA's campus. You work alongside current faculty and students on real projects. If UCLA is where you want to go, this is one of the best ways to build familiarity with the school long before you apply.",
+    grades:"9 to 12", cost:"Paid, some financial aid available", timing:"Summer",
+    tags:["aerospace","engineering","residential"], link:"https://summerspringboard.com/teen-programs/aerospace-engineering-at-ucla/", badges:["residential","paid"], counties:"all" },
+  { icon:"🤖", title:"FIRST Robotics Competition", org:"FIRST Robotics",
+    desc:"The most respected high school engineering competition in the country. Teams build full-size robots over six weeks and compete at regional and national events. Modesto and Stockton both have active teams nearby. Starting or leading a team is one of the strongest possible extracurriculars you can have for any engineering program.",
+    grades:"9 to 12", cost:"Varies by team, scholarships available", timing:"January through April",
+    tags:["engineering","competition"], link:"https://www.firstinspires.org/robotics/frc", badges:["competition"], counties:"all" },
+  { icon:"🏫", title:"UC Merced Summer Research via Cold Email", org:"UC Merced — MAE Department",
+    desc:"There is no formal application. You write directly to professors and ask to help in their lab over summer. UC Merced is 45 minutes from Modesto. Professors like Dr. Francesco Danzi who works on UAV design and Prof. YangQuan Chen who studies drone systems have taken on motivated students before. Self-initiated research like this is one of the most impressive things you can show a college.",
+    grades:"10 to 12", cost:"Free, unpaid volunteer research", timing:"Summer",
+    tags:["free","aerospace","engineering","online"], link:"https://mae.ucmerced.edu/faculty", badges:["free"], counties:["Stanislaus","San Joaquin","Merced","Fresno","Madera","Kings","Tulare"] },
+  { icon:"🔭", title:"Stanford Medical Youth Science Program", org:"Stanford University",
+    desc:"A free five-week residential program for low-income and underrepresented high school juniors from Northern and Central California. Participants receive intensive science training and one-on-one mentorship from working medical professionals. Central Valley students are genuinely recruited for this one.",
+    grades:"11", cost:"Free", timing:"Summer",
+    tags:["free","residential"], link:"https://smysp.stanford.edu/", badges:["free","residential"], counties:["Fresno","Kern","Kings","Madera","Merced","San Joaquin","Stanislaus","Tulare"] },
+  { icon:"💡", title:"Science Olympiad", org:"Science Olympiad Inc.",
+    desc:"A team competition with 23 different events covering engineering, science, and technology. Aerospace events include Wright Stuff for plane design and Scrambler for engineering challenges. If your school does not have a team yet, starting one is actually a stronger application story than simply joining an existing one.",
+    grades:"6 to 12", cost:"Free with a small registration fee", timing:"Year-round, tournaments in spring",
+    tags:["free","engineering","aerospace","competition"], link:"https://www.soinc.org/", badges:["free","competition"], counties:"all" },
+  { icon:"🧪", title:"Fresno State STEM Outreach Programs", org:"California State University, Fresno",
+    desc:"CSU Fresno runs several STEM outreach programs for Central Valley high schoolers including science academies, dual enrollment courses, and research exposure for students who want a head start. Check their outreach office directly for what is running in the current season.",
+    grades:"9 to 12", cost:"Free to low cost", timing:"Summer and year-round",
+    tags:["free","engineering"], link:"https://www.fresnostate.edu/", badges:["free"], counties:["Fresno","Madera","Kings","Tulare","Merced"] },
+  { icon:"🛸", title:"Embry-Riddle Aeronautical University Summer Academy", org:"Embry-Riddle Aeronautical University",
+    desc:"Week-long camps in aviation, aerospace engineering, robotics, and space science at campuses in Daytona Beach and Prescott. Embry-Riddle is one of the most well-known aerospace universities in the country. Attending here sends a clear signal that your interest in the field goes beyond just a class you took.",
+    grades:"9 to 12", cost:"$1,200 to $2,000 per week", timing:"June through July",
+    tags:["aerospace","residential","engineering"], link:"https://daytonabeach.erau.edu/academics/summer-academy", badges:["residential","paid"], counties:"all" },
+];
+
+const SCHOLARSHIPS = [
+  { icon:"⚡", title:"Edison Scholars Program", org:"Edison International",
+    desc:"$50,000 scholarships for 30 California high school seniors pursuing STEM at a four-year university. Specifically designed for students from underserved communities and Central Valley students have won this before. Requires a 3.0 GPA and demonstrated financial need.",
+    grades:"12", cost:"Free to apply", timing:"Apply in fall of senior year",
+    tags:["scholarship"], link:"https://www.edison.com/community/edison-scholars", badges:["scholarship","free"], counties:["Fresno","Kern","Kings","Madera","Merced","San Joaquin","Stanislaus","Tulare"] },
+  { icon:"🌻", title:"Central Valley Community Foundation Scholarships", org:"Central Valley Community Foundation",
+    desc:"Nearly 240 scholarships awarded every year totaling close to $3 million since 2017, all serving students across the region. Multiple awards are focused on STEM fields. Based in Fresno with reach across the entire Valley.",
+    grades:"12", cost:"Free to apply", timing:"Apply in spring of senior year",
+    tags:["scholarship"], link:"https://www.centralvalleycf.org/scholarships", badges:["scholarship","free"], counties:["Fresno","Madera","Kings","Tulare","Merced","Kern"] },
+  { icon:"🤝", title:"Stanislaus Community Foundation Scholarships", org:"Stanislaus Community Foundation",
+    desc:"Multiple scholarships for Stanislaus County students, including STEM-specific awards. The Beyer High School STEM scholarship targets students going directly into STEM degrees. General awards for Modesto and Turlock area students are also available to apply for.",
+    grades:"12", cost:"Free to apply", timing:"Spring of senior year",
+    tags:["scholarship"], link:"https://www.stanislauscf.org/scholarships", badges:["scholarship","free"], counties:["Stanislaus"] },
+  { icon:"🔬", title:"San Joaquin Community Foundation Scholarships", org:"San Joaquin Community Foundation",
+    desc:"Multiple scholarships for San Joaquin County students including a STEM-specific fund honoring Dr. Grimes, which supports Manteca Unified seniors headed toward STEM or medical fields. Strong focus on underrepresented students throughout the county.",
+    grades:"12", cost:"Free to apply", timing:"Spring of senior year",
+    tags:["scholarship"], link:"https://sanjoaquincf.org/scholarships/", badges:["scholarship","free"], counties:["San Joaquin"] },
+  { icon:"🏆", title:"Central Valley Scholars", org:"Central Valley Scholars",
+    desc:"$30,000 in scholarships set aside specifically for Central Valley students. Focused on recognizing local talent and supporting students who may not have had the same access to college prep resources that students in other parts of the state take for granted. Check the website for the current application cycle.",
+    grades:"12", cost:"Free to apply", timing:"Check website for deadlines",
+    tags:["scholarship"], link:"https://www.centralvalleyscholars.org/scholarships", badges:["scholarship","free"], counties:"all" },
+];
+
+const COMPETITIONS = [
+  { icon:"🌍", title:"Conrad Challenge", org:"Conrad Foundation",
+    desc:"A national innovation competition with a dedicated Aerospace and Aviation category. Teams of two to five students design solutions to real problems and pitch to judges that include working NASA engineers. Free to enter and one of the best competition experiences specifically for students planning to study aerospace.",
+    grades:"9 to 12", cost:"Free", timing:"Apply in fall, compete in spring",
+    tags:["free","aerospace","competition"], link:"https://www.conradchallenge.org/", badges:["free","competition"], counties:"all" },
+  { icon:"📱", title:"Congressional App Challenge", org:"U.S. House of Representatives",
+    desc:"Build an app and submit it to your district's U.S. Congressman. Winners are recognized in Washington D.C. Central Valley districts historically see fewer entries than coastal areas, so your chances here are genuinely better than average.",
+    grades:"9 to 12", cost:"Free", timing:"Submit by November 1",
+    tags:["free","competition","online"], link:"https://www.congressionalappchallenge.us/", badges:["free","competition"], counties:"all" },
+  { icon:"🚀", title:"NASA Student Launch Initiative", org:"NASA Marshall Space Flight Center",
+    desc:"Teams design, build, and actually launch a high-powered rocket that meets NASA's technical requirements, then submit a full engineering report. This is college-level aerospace work done while still in high school. It runs from October through April and carries serious weight on any engineering application.",
+    grades:"9 to 12", cost:"Free — NASA provides some funding", timing:"October through April",
+    tags:["free","aerospace","engineering","competition"], link:"https://www.nasa.gov/learning-resources/nasa-student-launch/", badges:["free","competition"], counties:"all" },
+  { icon:"🧬", title:"Regeneron Science Talent Search", org:"Society for Science",
+    desc:"The oldest and most prestigious pre-college science competition in the United States. If you have done any research through a professor or independently, you can submit it here. Even reaching the finalist stage regularly appears in Ivy League admission profiles.",
+    grades:"12", cost:"Free", timing:"Apply in fall of senior year",
+    tags:["free","competition"], link:"https://www.societyforscience.org/regeneron-sts/", badges:["free","competition"], counties:"all" },
+  { icon:"⚙️", title:"AIAA Student Design Competition", org:"American Institute of Aeronautics and Astronautics",
+    desc:"The professional organization for aerospace engineers runs competitions specifically for high school students. Submitting a design report to a real aerospace professional body tells admissions readers that your interest in the field is deeper than anything that shows up on a transcript.",
+    grades:"9 to 12", cost:"Free", timing:"Various deadlines throughout the year",
+    tags:["free","aerospace","competition"], link:"https://www.aiaa.org/get-involved/students-educators/Design-Competitions", badges:["free","competition"], counties:"all" },
+  { icon:"🏙️", title:"Future City Competition", org:"DiscoverE / Future City",
+    desc:"Middle school teams design a city of the future using real engineering principles. If you want to mentor younger students or help start a team at a nearby middle school, this pairs naturally with any community STEM outreach work you are already doing.",
+    grades:"6 to 8 as participant, 9 to 12 as mentor", cost:"Free", timing:"September through January",
+    tags:["free","engineering","competition"], link:"https://futurecity.org/", badges:["free","competition"], counties:"all" },
+];
+
+const TIPS = [
+  { num:"01", title:"Depth beats breadth", text:"One program where you actually led something beats five where you just showed up. Admissions officers at schools like UCLA are looking for sustained commitment and genuine impact, not a long roster of club memberships with nothing behind them." },
+  { num:"02", title:"Apply to the things that seem out of reach", text:"Programs like COSMOS, NASA Scholars, and SSP accept fewer than 15 percent of applicants. But Central Valley students are underrepresented in every single one of them. Geographic diversity works in your favor here. You will not know until you apply." },
+  { num:"03", title:"Cold email a professor", text:"UC Merced is 45 minutes from Modesto. Write to a faculty member in the MAE department and ask if you can help in their lab over summer. Most high school students never try this. It works more often than you would expect." },
+  { num:"04", title:"Track everything with numbers from day one", text:"Taught three workshops to 40 students is a statement. Volunteered at STEM events is not. Write down attendance counts, hours, and outcomes from your very first session. You will be grateful for it come October of senior year." },
+  { num:"05", title:"Start something rather than just join something", text:"A program you built tells a story. A club you joined does not, unless you eventually led it. Starting a STEM workshop series, a Science Olympiad team, or even a public GitHub project puts you in a genuinely different category of applicant." },
+  { num:"06", title:"Your location is actually an advantage", text:"The Central Valley is underrepresented at top universities and UC schools know it. Frame your background as a student who grew up in an agricultural region with limited STEM access and built something anyway. That is not a weakness. That is your story." },
+];
+
+let activeFilter = 'all', activeCounty = null;
+
+const BADGE_MAP = { free:['badge-free','Free'], online:['badge-online','Online'], residential:['badge-residential','Residential'], paid:['badge-paid','Paid'], competition:['badge-competition','Competition'], scholarship:['badge-scholarship','Scholarship'] };
+
+const matchesCounty = i => !activeCounty || i.counties === 'all' || i.counties.includes(activeCounty);
+const matchesFilter = i => activeFilter === 'all' || i.tags.includes(activeFilter);
+const matchesSearch = (i, q) => !q || (i.title+i.desc+i.org+i.tags.join(' ')).toLowerCase().includes(q.toLowerCase());
+
+function badgeHTML(b) { return b.map(x => { const [c,l]=BADGE_MAP[x]||['','']; return `<span class="badge ${c}">${l}</span>`; }).join(''); }
+
+function cardHTML(item) {
+  return `<div class="program-card">
+    <div class="card-top"><div class="card-icon">${item.icon}</div><div class="card-badges">${badgeHTML(item.badges)}</div></div>
+    <div class="card-title">${item.title}</div>
+    <div class="card-org">${item.org}</div>
+    <div class="card-desc">${item.desc}</div>
+    <div class="card-meta"><span>🎓 Grades ${item.grades}</span><span>💰 ${item.cost}</span><span>📅 ${item.timing}</span></div>
+    <a href="${item.link}" target="_blank" class="card-link">Learn More &rarr;</a>
+  </div>`;
+}
+
+function tipHTML(t) {
+  return `<div class="tip-card"><div class="tip-num">${t.num}</div><div class="tip-title">${t.title}</div><div class="tip-text">${t.text}</div></div>`;
+}
+
+function empty(msg) { return `<p style="color:var(--ink-faint);font-size:.86rem;grid-column:1/-1;padding:1rem 0">${msg}</p>`; }
+
+function setFilter(tag, btn) {
+  activeFilter = tag;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  filterCards();
+}
+
+function filterByCounty(county, el) {
+  if (activeCounty === county) { activeCounty = null; document.querySelectorAll('.county-card').forEach(c => c.classList.remove('active')); }
+  else { activeCounty = county; document.querySelectorAll('.county-card').forEach(c => c.classList.remove('active')); el.classList.add('active'); }
+  filterCards();
+}
+
+function filterCards() {
+  const q = document.getElementById('prog-search').value;
+  const fp = PROGRAMS.filter(p => matchesFilter(p) && matchesCounty(p) && matchesSearch(p,q));
+  const fs = SCHOLARSHIPS.filter(p => matchesCounty(p) && matchesSearch(p,q));
+  const fc = COMPETITIONS.filter(p => matchesCounty(p) && matchesSearch(p,q));
+  document.getElementById('programs-grid').innerHTML = fp.length ? fp.map(cardHTML).join('') : empty('No programs match your current filters. Try adjusting your search or county selection.');
+  document.getElementById('scholarships-grid').innerHTML = fs.length ? fs.map(cardHTML).join('') : empty('No scholarships match your current county filter.');
+  document.getElementById('competitions-grid').innerHTML = fc.length ? fc.map(cardHTML).join('') : empty('No competitions match your current filters.');
+}
+
+document.getElementById('county-grid').innerHTML = COUNTIES.map(c => `<div class="county-card" onclick="filterByCounty('${c}',this)"><div class="county-name">${c} County</div><div class="county-count">Tap to filter</div></div>`).join('');
+document.getElementById('tips-grid').innerHTML = TIPS.map(tipHTML).join('');
+filterCards();
+</script>
+</body>
+</html>
