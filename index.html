@@ -621,6 +621,7 @@ function filterCards() {
 document.getElementById('county-grid').innerHTML = COUNTIES.map(c => `<div class="county-card" onclick="filterByCounty('${c}',this)"><div class="county-name">${c} County</div><div class="county-count">Tap to filter</div></div>`).join('');
 document.getElementById('tips-grid').innerHTML = TIPS.map(tipHTML).join('');
 filterCards();
-</script>
+<script data-goatcounter="https://cvstemguide.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
