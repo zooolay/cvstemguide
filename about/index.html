@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — CV STEM Guide</title>
+<meta name="description" content="CV STEM Guide is a free, no-sign-up resource built by a Central Valley student to close the STEM information gap across 18 counties.">
+<link rel="canonical" href="https://cvstemguide.com/about">
+<link rel="icon" href="/assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles/base.css">
+<link rel="stylesheet" href="/styles/components.css">
+</head>
+<body>
+
+<header class="nav">
+  <a href="/" class="nav-logo" aria-label="CV STEM Guide home"><span class="dot"></span>CV STEM Guide</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/">Home</a>
+    <a href="/explore">Explore</a>
+    <a href="/about" aria-current="page">About</a>
+    <a href="/contribute" class="nav-cta">Contribute</a>
+  </nav>
+  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+</header>
+
+<div class="page-head">
+  <div class="container">
+    <span class="eyebrow">About</span>
+    <h1>The resource that should have already existed.</h1>
+    <p>CV STEM Guide collects STEM programs, scholarships, and competitions from across 18 Central Valley counties into one place — so students don't have to dig through dozens of websites to find opportunities actually available to them.</p>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="section-head prose" data-animate>
+      <span class="eyebrow">The gap</span>
+      <h2 class="title">Why the Central Valley needs this</h2>
+      <p class="sub">The Central Valley is one of the most underserved regions in California for STEM access. More than 50% of students here identify as economically disadvantaged, and most schools report a shortage of advanced STEM programs. The opportunities exist — they're just hard to find. CV STEM Guide exists to close that information gap, for free, forever.</p>
+    </div>
+    <div class="feature-grid">
+      <div class="feature" data-animate><div class="feature-ic">🆓</div><h3>Always free</h3><p>No account, no paywall, no ads. Every link goes straight to the official program.</p></div>
+      <div class="feature" data-animate data-delay="1"><div class="feature-ic">📍</div><h3>Hyper-local</h3><p>Filter by your county to see only what's open to students near you.</p></div>
+      <div class="feature" data-animate data-delay="2"><div class="feature-ic">🔍</div><h3>Open & auditable</h3><p>One static site, no backend, fully open source — anyone can verify or contribute.</p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider container">
+
+<!-- Counties -->
+<section>
+  <div class="container">
+    <div class="section-head" data-animate>
+      <span class="eyebrow">Coverage</span>
+      <h2 class="title">18 counties, one guide</h2>
+      <p class="sub">Tap a county to jump into the explorer filtered to opportunities available there.</p>
+    </div>
+    <div class="county-grid" id="county-grid" data-animate></div>
+  </div>
+</section>
+
+<hr class="divider container">
+
+<!-- Tips -->
+<section>
+  <div class="container">
+    <div class="section-head" data-animate>
+      <span class="eyebrow">Straight talk</span>
+      <h2 class="title">How to actually get in</h2>
+      <p class="sub">Real advice on making the most of these opportunities for college applications.</p>
+    </div>
+    <div class="tips-grid" id="tips-grid"></div>
+  </div>
+</section>
+
+<hr class="divider container">
+
+<!-- Creator -->
+<section>
+  <div class="container prose" data-animate>
+    <span class="eyebrow">The creator</span>
+    <h2 class="title" style="font-family:var(--font-display);font-size:var(--fs-h2);margin:.75rem 0 1rem">Built by a high school student from Patterson, California</h2>
+    <p class="muted">Growing up in the Central Valley and seeing firsthand how few STEM resources were visible or accessible to local students, the goal was simple: build the resource that should have already existed. If this site helped you find a program or scholarship, share it with a classmate, a counselor, or a local library. The more students who know it exists, the more useful it becomes.</p>
+    <div style="margin-top:2rem">
+      <a href="/explore" class="btn btn-primary btn-lg">Start exploring →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo"><span class="dot"></span>CV STEM Guide</div>
+        <p class="footer-blurb">A free resource built by a Patterson student for students across the Central Valley. No ads, no sign-ups, no cost — just opportunities for everyone.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="/explore">All opportunities</a>
+        <a href="/explore?type=program">Programs</a>
+        <a href="/explore?type=scholarship">Scholarships</a>
+        <a href="/explore?type=competition">Competitions</a>
+      </div>
+      <div class="footer-col">
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/contribute">Contribute</a>
+        <a href="mailto:support@cvstemguide.com">Contact</a>
+      </div>
+    </div>
+    <div class="footer-note">
+      <span>© <span id="year">2026</span> CV STEM Guide · Updated April 2026</span>
+      <span>Know a program that should be listed? <a href="/contribute">Submit it →</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="/scripts/data.js"></script>
+<script src="/scripts/ui.js"></script>
+<script src="/scripts/main.js" defer></script>
+<script data-goatcounter="https://cvstemguide.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
