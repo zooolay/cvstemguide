@@ -1,5 +1,5 @@
 /* ============================================================
-   CV STEM Guide — Data
+   CV STEM Guide - Data
    Single source of truth for all resources. Loaded as a plain
    script (no build step); attaches to the global `CVSTEM`.
    To add a resource: open an issue or append an object below.
@@ -9,7 +9,7 @@ window.CVSTEM = window.CVSTEM || {};
 CVSTEM.COUNTIES = ["Butte","Colusa","Fresno","Glenn","Kern","Kings","Madera","Merced","Placer","Sacramento","San Joaquin","Shasta","Stanislaus","Sutter","Tehama","Tulare","Yolo","Yuba"];
 
 CVSTEM.PROGRAMS = [
-  { icon:"🚀", title:"COSMOS — California Summer School for Math and Science", org:"University of California System",
+  { icon:"🚀", title:"COSMOS: California Summer School for Math and Science", org:"University of California System",
     desc:"A four-week residential program at UC Davis, UC Merced, UCLA, UC Irvine, UC San Diego, or UC Santa Cruz. Students work directly with UC faculty on real STEM research. It is one of California's most respected pre-college programs and a genuinely transformative experience for anyone serious about STEM.",
     grades:"8 to 12", cost:"Free with need-based aid available", timing:"Summer, July through August",
     tags:["free","residential","engineering","aerospace"], link:"https://cosmos-ucop.ucdavis.edu/", badges:["free","residential"], counties:"all" },
@@ -17,11 +17,11 @@ CVSTEM.PROGRAMS = [
     desc:"A free online course where top participants earn an in-person invitation to NASA's Johnson Space Center. Students complete real aerospace engineering design challenges guided by NASA mentors throughout. One of the most respected aerospace-specific programs available to any high schooler in the country.",
     grades:"11", cost:"Free", timing:"Fall online, Spring on-site",
     tags:["free","aerospace","online","engineering"], link:"https://www.nasa.gov/learning-resources/high-school-aerospace-scholars/", badges:["free","online"], counties:"all" },
-  { icon:"🌌", title:"Summer Science Program — Astrophysics", org:"Summer Science Program",
+  { icon:"🌌", title:"Summer Science Program: Astrophysics", org:"Summer Science Program",
     desc:"A five-week residential program where student teams actually calculate asteroid orbits using real telescope observations. Need-based aid frequently brings the cost down to zero. It is one of the most selective and well-regarded pre-college STEM experiences in the United States.",
-    grades:"10 to 12", cost:"Up to $9,800 — need-based aid often brings it to zero", timing:"Late June through Early August",
+    grades:"10 to 12", cost:"Up to $9,800, need-based aid often brings it to zero", timing:"Late June through Early August",
     tags:["free","residential","aerospace"], link:"https://summerscience.org/", badges:["residential"], counties:"all" },
-  { icon:"🛩️", title:"UCLA Summer Springboard — Aerospace Engineering", org:"UCLA / Springboard",
+  { icon:"🛩️", title:"UCLA Summer Springboard: Aerospace Engineering", org:"UCLA / Springboard",
     desc:"A hands-on aerospace engineering program held on UCLA's campus. You work alongside current faculty and students on real projects. If UCLA is where you want to go, this is one of the best ways to build familiarity with the school long before you apply.",
     grades:"9 to 12", cost:"Paid, some financial aid available", timing:"Summer",
     tags:["aerospace","engineering","residential"], link:"https://summerspringboard.com/teen-programs/aerospace-engineering-at-ucla/", badges:["residential","paid"], counties:"all" },
@@ -29,7 +29,7 @@ CVSTEM.PROGRAMS = [
     desc:"The most respected high school engineering competition in the country. Teams build full-size robots over six weeks and compete at regional and national events. Modesto and Stockton both have active teams nearby. Starting or leading a team is one of the strongest possible extracurriculars you can have for any engineering program.",
     grades:"9 to 12", cost:"Varies by team, scholarships available", timing:"January through April",
     tags:["engineering","competition"], link:"https://www.firstinspires.org/robotics/frc", badges:["competition"], counties:"all" },
-  { icon:"🏫", title:"UC Merced Summer Research via Cold Email", org:"UC Merced — MAE Department",
+  { icon:"🏫", title:"UC Merced Summer Research via Cold Email", org:"UC Merced MAE Department",
     desc:"There is no formal application. You write directly to professors and ask to help in their lab over summer. UC Merced is 45 minutes from Modesto. Professors like Dr. Francesco Danzi who works on UAV design and Prof. YangQuan Chen who studies drone systems have taken on motivated students before. Self-initiated research like this is one of the most impressive things you can show a college.",
     grades:"10 to 12", cost:"Free, unpaid volunteer research", timing:"Summer",
     tags:["free","aerospace","engineering","online"], link:"https://mae.ucmerced.edu/faculty", badges:["free"], counties:["Stanislaus","San Joaquin","Merced","Fresno","Madera","Kings","Tulare"] },
@@ -85,7 +85,7 @@ CVSTEM.COMPETITIONS = [
     tags:["free","competition","online"], link:"https://www.congressionalappchallenge.us/", badges:["free","competition"], counties:"all" },
   { icon:"🚀", title:"NASA Student Launch Initiative", org:"NASA Marshall Space Flight Center",
     desc:"Teams design, build, and actually launch a high-powered rocket that meets NASA's technical requirements, then submit a full engineering report. This is college-level aerospace work done while still in high school. It runs from October through April and carries serious weight on any engineering application.",
-    grades:"9 to 12", cost:"Free — NASA provides some funding", timing:"October through April",
+    grades:"9 to 12", cost:"Free, NASA provides some funding", timing:"October through April",
     tags:["free","aerospace","engineering","competition"], link:"https://www.nasa.gov/learning-resources/nasa-student-launch/", badges:["free","competition"], counties:"all" },
   { icon:"🧬", title:"Regeneron Science Talent Search", org:"Society for Science",
     desc:"The oldest and most prestigious pre-college science competition in the United States. If you have done any research through a professor or independently, you can submit it here. Even reaching the finalist stage regularly appears in Ivy League admission profiles.",
@@ -110,7 +110,7 @@ CVSTEM.TIPS = [
   { num:"06", title:"Your location is actually an advantage", text:"The Central Valley is underrepresented at top universities and UC schools know it. Frame your background as a student who grew up in an agricultural region with limited STEM access and built something anyway. That is not a weakness. That is your story." },
 ];
 
-/* Unified list for the Explore page — adds a `type` to every record. */
+/* Unified list for the Explore page, adds a `type` to every record. */
 CVSTEM.ALL = [
   ...CVSTEM.PROGRAMS.map(x => ({ ...x, type: "Program" })),
   ...CVSTEM.SCHOLARSHIPS.map(x => ({ ...x, type: "Scholarship" })),

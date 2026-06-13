@@ -1,5 +1,5 @@
 /* ============================================================
-   CV STEM Guide — UI rendering & the unified Explorer
+   CV STEM Guide - UI rendering & the unified Explorer
    Depends on data.js (window.CVSTEM). No inline handlers.
    ============================================================ */
 (function () {

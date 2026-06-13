@@ -1,5 +1,5 @@
 /* ============================================================
-   CV STEM Guide — Site behavior (runs on every page)
+   CV STEM Guide - Site behavior (runs on every page)
    Nav scroll state · mobile menu · scroll-reveal · smooth scroll
    ============================================================ */
 (function () {

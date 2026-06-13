@@ -82,13 +82,13 @@ CNAME                                  Custom domain
 ```
 
 Pages use **clean, folder-based URLs** (`cvstemguide.com/about`, `/explore`, `/contribute`)
-served natively by GitHub Pages — no router or redirects required. All resource data
+served natively by GitHub Pages, with no router or redirects required. All resource data
 lives in [`scripts/data.js`](scripts/data.js); to add a program, scholarship, or
 competition, append an object there (or open an issue and it will be added for you).
 
 ### Local preview
 
-No build needed — it's static files. Serve the folder from its root with any static
+No build needed, it's static files. Serve the folder from its root with any static
 server, e.g. `npx serve .` or `python -m http.server 8000`, then open the printed URL.
 
 > `.claude/` holds an optional local-preview helper used during development; it is not
