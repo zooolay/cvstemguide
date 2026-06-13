@@ -150,4 +150,12 @@
     el.innerHTML = C.COUNTIES.map((c) =>
       `<a class="county-pill" href="/explore?county=${encodeURIComponent(c)}">${c}</a>`).join("");
   };
+
+  /* ---------- Scrolling county band (kinetic) ---------- */
+  C.renderCountyMarquee = function (selector) {
+    const el = document.querySelector(selector);
+    if (!el) return;
+    const once = C.COUNTIES.map((c) => `<span class="item">${c}</span>`).join("");
+    el.innerHTML = once + once; // duplicated set → seamless -50% loop
+  };
 })();

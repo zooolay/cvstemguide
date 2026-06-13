@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CV STEM Guide — STEM programs, scholarships & competitions for the Central Valley</title>
+<title>CV STEM Guide</title>
 <meta name="description" content="A free guide connecting students across 18 Central Valley counties to real STEM programs, scholarships, and competitions. No cost. No sign-up. Just opportunities.">
 <link rel="canonical" href="https://cvstemguide.com/">
 <meta property="og:title" content="CV STEM Guide">
@@ -13,7 +13,7 @@
 <link rel="icon" href="/assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500;1,600;1,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles/base.css">
 <link rel="stylesheet" href="/styles/components.css">
 </head>
@@ -21,7 +21,10 @@
 
 <!-- ============ NAV ============ -->
 <header class="nav">
-  <a href="/" class="nav-logo" aria-label="CV STEM Guide home"><span class="dot"></span>CV STEM Guide</a>
+  <a href="/" class="nav-logo" aria-label="Central Valley STEM Guide home">
+    <svg class="logo-badge" viewBox="0 0 100 100" width="30" height="30" aria-hidden="true"><rect width="100" height="100" rx="24" fill="#1a6fa8"/><text x="50" y="72" text-anchor="middle" font-size="56" font-weight="700" fill="#f0c96a" font-family="Georgia,serif">CV</text></svg>
+    <span>Central Valley STEM Guide</span>
+  </a>
   <nav class="nav-links" aria-label="Primary">
     <a href="/" aria-current="page">Home</a>
     <a href="/explore">Explore</a>
@@ -34,7 +37,9 @@
 <!-- ============ HERO ============ -->
 <section class="hero">
   <div class="hero-media">
-    <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1600&q=80" alt="Wide open Central Valley sky over open fields" fetchpriority="high">
+    <div class="hero-parallax" data-parallax="0.18">
+      <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&q=80" alt="Golden Central Valley farmland at sunset" fetchpriority="high">
+    </div>
   </div>
   <div class="container hero-inner">
     <span class="eyebrow hero-eyebrow">Built for the Central Valley</span>
@@ -50,10 +55,10 @@
 <!-- ============ STATS ============ -->
 <div class="container">
   <div class="stats">
-    <div class="stat" data-animate><div class="stat-num">18</div><div class="stat-label">Counties covered</div></div>
-    <div class="stat" data-animate data-delay="1"><div class="stat-num">20+</div><div class="stat-label">Opportunities listed</div></div>
-    <div class="stat" data-animate data-delay="2"><div class="stat-num">$500K+</div><div class="stat-label">In scholarships</div></div>
-    <div class="stat" data-animate data-delay="3"><div class="stat-num">100%</div><div class="stat-label">Free to use</div></div>
+    <div class="stat" data-animate><div class="stat-num" data-count-to="18">18</div><div class="stat-label">Counties covered</div></div>
+    <div class="stat" data-animate data-delay="1"><div class="stat-num" data-count-to="20" data-suffix="+">20+</div><div class="stat-label">Opportunities listed</div></div>
+    <div class="stat" data-animate data-delay="2"><div class="stat-num" data-count-to="500" data-prefix="$" data-suffix="K+">$500K+</div><div class="stat-label">In scholarships</div></div>
+    <div class="stat" data-animate data-delay="3"><div class="stat-num" data-count-to="100" data-suffix="%">100%</div><div class="stat-label">Free to use</div></div>
   </div>
 </div>
 
@@ -70,6 +75,29 @@
       <div class="feature" data-animate data-delay="1"><div class="feature-ic">💰</div><h3>Scholarships</h3><p>Local and statewide scholarships built specifically for Central Valley students pursuing STEM degrees.</p></div>
       <div class="feature" data-animate data-delay="2"><div class="feature-ic">🏆</div><h3>Competitions</h3><p>Free, high-impact competitions that carry real weight on a college application.</p></div>
       <div class="feature" data-animate data-delay="3"><div class="feature-ic">🧭</div><h3>Real advice</h3><p>Straight talk on how to actually use these opportunities to strengthen your application.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ IMAGE MARQUEE (moving images) ============ -->
+<section style="padding-block:clamp(2.5rem,5vw,4rem);overflow:hidden">
+  <div class="container section-head" data-animate style="margin-bottom:1.75rem">
+    <span class="eyebrow">From the Valley</span>
+    <h2 class="title">Real students. Real opportunities.</h2>
+  </div>
+  <div class="marquee marquee--images" aria-hidden="true">
+    <div class="marquee-track">
+      <figure class="marquee-img"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=720&q=80" alt="" loading="lazy"><figcaption>Central Valley</figcaption></figure>
+      <figure class="marquee-img"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=720&q=80" alt="" loading="lazy"><figcaption>Online programs</figcaption></figure>
+      <figure class="marquee-img"><img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=720&q=80" alt="" loading="lazy"><figcaption>Summer schools</figcaption></figure>
+      <figure class="marquee-img"><img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=720&q=80" alt="" loading="lazy"><figcaption>Scholarships</figcaption></figure>
+      <figure class="marquee-img"><img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=720&q=80" alt="" loading="lazy"><figcaption>Research &amp; labs</figcaption></figure>
+      <!-- duplicate set for a seamless loop -->
+      <figure class="marquee-img"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=720&q=80" alt="" loading="lazy"><figcaption>Central Valley</figcaption></figure>
+      <figure class="marquee-img"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=720&q=80" alt="" loading="lazy"><figcaption>Online programs</figcaption></figure>
+      <figure class="marquee-img"><img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=720&q=80" alt="" loading="lazy"><figcaption>Summer schools</figcaption></figure>
+      <figure class="marquee-img"><img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=720&q=80" alt="" loading="lazy"><figcaption>Scholarships</figcaption></figure>
+      <figure class="marquee-img"><img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=720&q=80" alt="" loading="lazy"><figcaption>Research &amp; labs</figcaption></figure>
     </div>
   </div>
 </section>
@@ -106,6 +134,13 @@
   </div>
 </section>
 
+<!-- ============ COUNTY MARQUEE (kinetic) ============ -->
+<div class="county-marquee" role="img" aria-label="Serving 18 Central Valley counties">
+  <div class="marquee">
+    <div class="marquee-track" id="county-marquee-track"></div>
+  </div>
+</div>
+
 <!-- ============ CTA ============ -->
 <section>
   <div class="container">
@@ -122,7 +157,7 @@
   <div class="container">
     <div class="footer-grid">
       <div>
-        <div class="footer-logo"><span class="dot"></span>CV STEM Guide</div>
+        <div class="footer-logo"><svg class="logo-badge" viewBox="0 0 100 100" width="30" height="30" aria-hidden="true"><rect width="100" height="100" rx="24" fill="#1a6fa8"/><text x="50" y="72" text-anchor="middle" font-size="56" font-weight="700" fill="#f0c96a" font-family="Georgia,serif">CV</text></svg>Central Valley STEM Guide</div>
         <p class="footer-blurb">A free resource built by a Patterson student for students across the Central Valley. No ads, no sign-ups, no cost — just opportunities for everyone.</p>
       </div>
       <div class="footer-col">
@@ -140,7 +175,7 @@
       </div>
     </div>
     <div class="footer-note">
-      <span>© <span id="year">2026</span> CV STEM Guide · Updated April 2026</span>
+      <span>© <span id="year">2026</span> Central Valley STEM Guide · Updated June 2026</span>
       <span>Know a program that should be listed? <a href="/contribute">Submit it →</a></span>
     </div>
   </div>

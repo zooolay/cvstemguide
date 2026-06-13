@@ -43,8 +43,54 @@
     });
   });
 
-  /* ---------- Scroll-reveal animations ---------- */
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- Hero parallax (subtle, scroll-driven) ---------- */
+  function initParallax() {
+    if (reduce) return;
+    const layers = document.querySelectorAll("[data-parallax]");
+    if (!layers.length) return;
+    let ticking = false;
+    const update = () => {
+      const y = window.scrollY;
+      layers.forEach((el) => {
+        const speed = parseFloat(el.dataset.parallax) || 0.25;
+        el.style.transform = `translate3d(0, ${y * speed}px, 0)`;
+      });
+      ticking = false;
+    };
+    window.addEventListener("scroll", () => {
+      if (!ticking) { requestAnimationFrame(update); ticking = true; }
+    }, { passive: true });
+    update();
+  }
+
+  /* ---------- Count-up stats ---------- */
+  function initCounters() {
+    const nums = document.querySelectorAll("[data-count-to]");
+    if (!nums.length) return;
+    const animate = (el) => {
+      const target = parseFloat(el.dataset.countTo);
+      const prefix = el.dataset.prefix || "";
+      const suffix = el.dataset.suffix || "";
+      if (reduce) { el.textContent = prefix + target + suffix; return; }
+      const dur = 1400, start = performance.now();
+      const tick = (now) => {
+        const p = Math.min((now - start) / dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
+        el.textContent = prefix + Math.round(target * eased) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+    if (!("IntersectionObserver" in window)) { nums.forEach(animate); return; }
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach((e) => { if (e.isIntersecting) { animate(e.target); obs.unobserve(e.target); } });
+    }, { threshold: 0.4 });
+    nums.forEach((el) => io.observe(el));
+  }
+
+  /* ---------- Scroll-reveal animations ---------- */
   const reveal = () => {
     const items = document.querySelectorAll("[data-animate]");
     if (reduce || !("IntersectionObserver" in window)) {
@@ -69,8 +115,11 @@
       C.renderFeatured && C.renderFeatured("#featured-grid");
       C.renderTips && C.renderTips("#tips-grid");
       C.renderCounties && C.renderCounties("#county-grid");
+      C.renderCountyMarquee && C.renderCountyMarquee("#county-marquee-track");
       C.initExplorer && C.initExplorer();
     }
+    initParallax();
+    initCounters();
     reveal(); // observe after dynamic content is injected
     const yr = document.getElementById("year");
     if (yr) yr.textContent = new Date().getFullYear();
