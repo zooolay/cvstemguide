@@ -60,9 +60,39 @@ Submissions are reviewed and added on a rolling basis. Every addition helps anot
 
 ## Tech Stack
 
-This site is a single HTML file with no frameworks, no backend, and no dependencies. It is hosted on GitHub Pages and served at a custom domain. All filtering and search logic runs client-side in vanilla JavaScript.
+This site is a multi-page static site with no frameworks, no backend, and no build step. It is hosted on GitHub Pages and served at a custom domain. All filtering and search logic runs client-side in vanilla JavaScript.
 
 This keeps it fast, free to host, and easy for anyone to audit or contribute to.
+
+### Project structure
+
+```
+/                  index.html          Home
+/explore/          index.html          Unified searchable directory
+/about/            index.html          Story, counties, tips, creator
+/contribute/       index.html          How to submit a resource
+404.html                               Friendly not-found page
+/styles/           base.css            Design tokens, reset, typography
+                   components.css      Nav, hero, cards, explorer, footer
+/scripts/          data.js             All resources (single source of truth)
+                   ui.js               Card rendering + the Explorer
+                   main.js             Nav, mobile menu, scroll animations
+/assets/           favicon.svg
+CNAME                                  Custom domain
+```
+
+Pages use **clean, folder-based URLs** (`cvstemguide.com/about`, `/explore`, `/contribute`)
+served natively by GitHub Pages — no router or redirects required. All resource data
+lives in [`scripts/data.js`](scripts/data.js); to add a program, scholarship, or
+competition, append an object there (or open an issue and it will be added for you).
+
+### Local preview
+
+No build needed — it's static files. Serve the folder from its root with any static
+server, e.g. `npx serve .` or `python -m http.server 8000`, then open the printed URL.
+
+> `.claude/` holds an optional local-preview helper used during development; it is not
+> part of the deployed site and can be ignored or removed.
 
 ---
 

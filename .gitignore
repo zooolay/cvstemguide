@@ -1,0 +1,6 @@
+# Local Claude Code preview helper — not part of the deployed site
+.claude/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
