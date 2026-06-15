@@ -220,6 +220,12 @@ CVSTEM.PROGRAMS = [
     fields:["general","mechanical","electrical","civil"], gradeMin:11, gradeMax:12, grades:"11 to 12 (transfer)",
     cost:"Low (community college)", free:false, deadline:null, timing:"Year-round",
     link:"https://catalog.mccd.edu/pages/vcnNUlYUI9bbHdBfdZA2", badges:[], counties:["Merced","Madera"] },
+
+  { id:"caltech-up-close", icon:"🔭", title:"Caltech Up Close (Fall Fly-In)", org:"California Institute of Technology",
+    desc:"An all-expenses-paid fall fly-in to Caltech for high-achieving juniors from disadvantaged backgrounds — rural, small-town, or socioeconomically diverse — who are seriously interested in STEM. Travel, housing, and meals are covered. A direct look at one of the world's top STEM universities.",
+    fields:["general"], gradeMin:11, gradeMax:11, grades:"11 (rising seniors)",
+    cost:"Free (travel covered)", free:true, deadline:"08-05", timing:"Apply by early August",
+    link:"https://www.admissions.caltech.edu/visit/visit-campus/fall-fly-in-program-caltech-up-close", badges:[], counties:"all" },
 ];
 
 /* ============================================================
@@ -309,6 +315,54 @@ CVSTEM.SCHOLARSHIPS = [
     fields:["cs","electrical"], gradeMin:9, gradeMax:12, grades:"9 to 12",
     cost:"Free to apply", free:true, deadline:null, timing:"Apply in fall",
     link:"https://www.aspirations.org/", badges:["scholarship"], counties:"all" },
+
+  { id:"questbridge-cps", icon:"🌉", title:"QuestBridge College Prep Scholars", org:"QuestBridge",
+    desc:"A free program for high-achieving juniors from households earning under about $65,000 with minimal assets. Finalists gain college-admissions support and a strong edge toward QuestBridge's National College Match in senior year. One of the most powerful pipelines for low-income students into top universities.",
+    fields:["general"], gradeMin:11, gradeMax:11, grades:"11",
+    cost:"Free to apply", free:true, deadline:null, timing:"Apply in spring of junior year",
+    link:"https://www.questbridge.org/high-school-students/college-prep-scholars", badges:["scholarship"], counties:"all" },
+
+  { id:"questbridge-ncm", icon:"🎯", title:"QuestBridge National College Match", org:"QuestBridge",
+    desc:"Matches high-achieving seniors from households under about $65,000 to full four-year scholarships (worth over $360,000) at 50+ partner colleges, with the entire application fee waived. Among the most valuable opportunities in the country for low-income students, open to every major.",
+    fields:["general"], gradeMin:12, gradeMax:12, grades:"12",
+    cost:"Free to apply", free:true, deadline:null, timing:"Apply early in senior year (fall)",
+    link:"https://www.questbridge.org/high-school-students/national-college-match", badges:["scholarship"], counties:"all" },
+
+  { id:"gates-scholarship", icon:"🌟", title:"The Gates Scholarship", org:"Gates Scholarship",
+    desc:"A highly selective, last-dollar scholarship covering the full cost of attendance for outstanding minority, Pell-eligible high school seniors with at least a 3.3 GPA. Open to any major, including every engineering field.",
+    fields:["general"], gradeMin:12, gradeMax:12, grades:"12",
+    cost:"Free to apply", free:true, deadline:"09-15", timing:"Apply by mid-September",
+    link:"https://www.thegatesscholarship.org/scholarship", badges:["scholarship"], counties:"all" },
+
+  { id:"jkc-college", icon:"🏅", title:"Jack Kent Cooke College Scholarship", org:"Jack Kent Cooke Foundation",
+    desc:"Up to $55,000 a year for high-achieving seniors with significant financial need headed to the nation's top four-year colleges, plus advising and a scholar network. Open to all majors, including STEM.",
+    fields:["general"], gradeMin:12, gradeMax:12, grades:"12",
+    cost:"Free to apply", free:true, deadline:"11-11", timing:"Apply by mid-November",
+    link:"https://www.jkcf.org/our-scholarships/", badges:["scholarship"], counties:"all" },
+
+  { id:"coca-cola-scholars", icon:"🥤", title:"Coca-Cola Scholars Program", org:"Coca-Cola Scholars Foundation",
+    desc:"A $20,000 achievement-based scholarship for 150 graduating seniors each year, recognizing leadership and impact. Open to seniors in all 50 states and any field of study — one of the most well-known scholarships in the country.",
+    fields:["general"], gradeMin:12, gradeMax:12, grades:"12",
+    cost:"Free to apply", free:true, deadline:"09-30", timing:"Apply by September 30",
+    link:"https://www.coca-colascholarsfoundation.org/apply/", badges:["scholarship"], counties:"all" },
+
+  { id:"horatio-alger", icon:"🧗", title:"Horatio Alger National & State Scholarships", org:"Horatio Alger Association",
+    desc:"Need-based scholarships (national awards are $25,000) for seniors who have faced and overcome significant adversity, with a family income under about $55,000 and at least a 2.0 GPA. California also offers state-specific awards. Open to any major.",
+    fields:["general"], gradeMin:12, gradeMax:12, grades:"12",
+    cost:"Free to apply", free:true, deadline:"10-25", timing:"Apply by October 25",
+    link:"https://horatioalger.org/scholarships-and-services/undergraduate-scholarships/", badges:["scholarship"], counties:"all" },
+
+  { id:"coolidge-scholarship", icon:"🎖️", title:"Coolidge Scholarship", org:"Calvin Coolidge Presidential Foundation",
+    desc:"A full-ride, merit-based scholarship — tuition, room, board, and expenses for all four years at any U.S. college — for academically outstanding juniors. Based purely on merit, not financial need or major. Extraordinarily competitive, but life-changing.",
+    fields:["general"], gradeMin:11, gradeMax:11, grades:"11",
+    cost:"Free to apply", free:true, deadline:"12-16", timing:"Apply in fall of junior year",
+    link:"https://coolidgescholars.org/", badges:["scholarship"], counties:"all" },
+
+  { id:"thrive-scholars", icon:"🌿", title:"Thrive Scholars Six-Year Program", org:"Thrive Scholars",
+    desc:"A six-year program supporting high-achieving students from low-income backgrounds from junior year through early career, with intensive academic, college, and STEM support — 75% of Thrive scholars persist in STEM. Free to participants.",
+    fields:["general"], gradeMin:11, gradeMax:11, grades:"11",
+    cost:"Free to apply", free:true, deadline:null, timing:"Apply in junior year",
+    link:"https://www.thrivescholars.org/programs/six-year-program/", badges:["scholarship"], counties:"all" },
 ];
 
 /* ============================================================
