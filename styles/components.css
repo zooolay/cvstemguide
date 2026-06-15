@@ -299,3 +299,121 @@ body.menu-open .nav-toggle span::after  { transform: rotate(-45deg); }
   .hero { min-height: 78vh; }
   .card-grid { grid-template-columns: 1fr; }
 }
+
+/* ============================================================
+   v2 additions — disciplines, deadlines, filters, placeholders
+   ============================================================ */
+
+/* ---------- Discipline tags on cards ---------- */
+.card-fields { display: flex; flex-wrap: wrap; gap: .35rem; margin: .15rem 0 .2rem; }
+.field-tag {
+  font-size: .68rem; font-weight: 600; letter-spacing: .01em;
+  padding: .16rem .55rem; border-radius: var(--r-pill);
+  background: var(--surface-2); color: var(--ink-muted); border: 1px solid var(--line);
+}
+
+/* ---------- "Closing soon" deadline styling ---------- */
+.badge-closing { background: #fdeceb; color: #c1322b; }
+.card--soon { border-color: #f1c4bf; box-shadow: 0 0 0 1px #f7d7d3 inset; }
+.card--soon:hover { border-color: #ec9d95; }
+.soon-text { color: #c1322b; font-weight: 700; }
+
+/* ---------- Expanded explorer controls ---------- */
+.explorer-controls { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; }
+.toggle {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-size: var(--fs-sm); font-weight: 600; color: var(--ink-muted);
+  padding: .58rem .95rem; border: 1px solid var(--line); border-radius: var(--r-pill);
+  background: var(--surface-2); cursor: pointer; user-select: none; white-space: nowrap;
+  transition: border-color var(--t-fast), background var(--t-fast), color var(--t-fast);
+}
+.toggle input { width: 1rem; height: 1rem; accent-color: var(--sky); cursor: pointer; }
+.toggle:hover { border-color: var(--ink-faint); }
+.toggle:has(input:checked) { border-color: var(--sky); color: var(--ink); background: var(--sky-light); }
+
+.chips--field { gap: .4rem; }
+.filter-group-label {
+  font-size: var(--fs-xs); font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--ink-faint); margin-bottom: .5rem; display: block;
+}
+
+/* ---------- Photo placeholders (swap in real Central Valley photos) ---------- */
+.photo-ph {
+  position: relative; display: grid; place-items: center; text-align: center;
+  width: 100%; height: 100%; color: #fff; overflow: hidden;
+  background: linear-gradient(125deg, #0f2741 0%, #1a6fa8 58%, #b8892a 120%);
+}
+.photo-ph::before {
+  content: ""; position: absolute; inset: 10px; border: 2px dashed rgba(255,255,255,.45); border-radius: calc(var(--r-lg) - 6px);
+}
+.photo-ph-inner { position: relative; z-index: 1; padding: 1rem; max-width: 86%; }
+.photo-ph-inner .cam { font-size: 1.8rem; opacity: .9; }
+.photo-ph-label {
+  display: block; margin-top: .4rem; font-size: .66rem; font-weight: 800; letter-spacing: .12em;
+  text-transform: uppercase; line-height: 1.5; color: rgba(255,255,255,.92);
+}
+.photo-ph-sub { display: block; margin-top: .25rem; font-size: .62rem; font-weight: 600; letter-spacing: .04em; color: rgba(255,255,255,.7); text-transform: none; }
+
+/* Real photos overlay their placeholder; if the file is missing, JS hides the
+   <img> (see initPhotoSwap in main.js) and the gradient placeholder shows through. */
+.hero-photo { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+.marquee-img .ph-photo { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; object-fit: cover; }
+
+/* Hero placeholder variant (full-bleed) */
+.hero-ph {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  background: linear-gradient(120deg, #0c2238 0%, #14507a 52%, #b8892a 130%);
+  transform: scale(1.04); transform-origin: center;
+  animation: kenburns 18s ease-in-out infinite alternate;
+}
+.hero-ph::after {
+  content: ""; position: absolute; inset: 0;
+  background-image: radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size: 26px 26px; opacity: .5;
+}
+.photo-marker {
+  position: absolute; right: 14px; bottom: 14px; z-index: 2;
+  font-size: .6rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+  color: rgba(255,255,255,.92); background: rgba(8,18,34,.55); backdrop-filter: blur(4px);
+  padding: .4rem .7rem; border: 1px dashed rgba(255,255,255,.5); border-radius: var(--r-pill);
+}
+
+/* ---------- Stat source citations ---------- */
+.stat-sources {
+  margin-top: 1.25rem; font-size: var(--fs-xs); color: var(--ink-faint); line-height: 1.7;
+}
+.stat-sources a { color: var(--ink-muted); text-decoration: underline; text-underline-offset: 2px; }
+.stat-sources a:hover { color: var(--sky); }
+.flag-note {
+  margin-top: 1rem; padding: .85rem 1rem; border-left: 3px solid var(--gold-soft);
+  background: var(--gold-light); border-radius: var(--r-sm);
+  font-size: var(--fs-sm); color: var(--ink-soft);
+}
+
+/* ---------- Contributor counter (Contribute page) ---------- */
+.counter-band {
+  display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; text-align: center;
+  padding: clamp(2rem, 5vw, 3rem); margin-top: 2.5rem;
+  border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--surface-2);
+}
+.counter-item .counter-num {
+  font-family: var(--font-display); font-weight: 600; font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--sky); line-height: 1; font-variant-numeric: tabular-nums;
+}
+.counter-item .counter-label { font-size: var(--fs-sm); color: var(--ink-muted); margin-top: .35rem; }
+
+/* ---------- Responsive: explorer + placeholders ---------- */
+@media (max-width: 720px) {
+  /* Field chips scroll horizontally instead of stacking tall */
+  .chips--field {
+    flex-wrap: nowrap; overflow-x: auto; scroll-snap-type: x proximity;
+    padding-bottom: .35rem; -webkit-overflow-scrolling: touch;
+  }
+  .chips--field::-webkit-scrollbar { height: 4px; }
+  .chips--field::-webkit-scrollbar-thumb { background: var(--line); border-radius: 2px; }
+  .chips--field .chip { flex: 0 0 auto; scroll-snap-align: start; }
+  .explorer-row { gap: .6rem; }
+  .search-field { flex: 1 1 100%; max-width: none; }
+  .county-select, .toggle { flex: 1 1 auto; }
+  .counter-band { gap: 1.25rem; }
+}

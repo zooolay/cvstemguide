@@ -16,10 +16,17 @@ The Central Valley is one of the most underserved regions in California when it 
 
 ## What Is On the Site?
 
-- **Programs** -- Free and paid STEM programs for grades 6 through 12, including residential summer programs, university research opportunities, and online courses
-- **Scholarships** -- Local and statewide scholarships specifically for Central Valley students pursuing STEM degrees
-- **Competitions** -- Free competitions like the Conrad Challenge, NASA Student Launch Initiative, and Congressional App Challenge that look strong on college applications
+CV STEM Guide now covers **every engineering discipline** -- mechanical, materials, civil & structural,
+electrical & computer, chemical & biochemical, nuclear, environmental & agricultural, aerospace, biomedical,
+industrial & systems, and computer science -- not just aerospace.
+
+- **Programs** -- Free and paid STEM programs for grades 6 through 12, including residential summer schools, national-lab internships (Lawrence Livermore, Sandia), university research, community-college transfer pathways, and online courses
+- **Scholarships** -- Local and statewide scholarships for Central Valley students pursuing any engineering or STEM degree
+- **Competitions** -- Free, high-impact competitions across every discipline that look strong on college applications
 - **Tips** -- Practical advice on how to actually use these opportunities to strengthen a college application
+
+Every listing can be filtered by **engineering field, county, type, grade level, and cost**, searched by
+keyword, and sorted by **deadline** -- with a "closing soon" highlight for anything due in the next 30 days.
 
 ---
 
@@ -68,18 +75,30 @@ This keeps it fast, free to host, and easy for anyone to audit or contribute to.
 
 ```
 /                  index.html          Home
-/explore/          index.html          Unified searchable directory
-/about/            index.html          Story, counties, tips, creator
-/contribute/       index.html          How to submit a resource
+/explore/          index.html          Unified searchable, filterable directory
+/about/            index.html          Story, disciplines, counties, tips, creator
+/contribute/       index.html          How to submit a resource + live resource counter
 404.html                               Friendly not-found page
+sitemap.xml                            Search-engine sitemap
+robots.txt                             Crawler directives -> sitemap
 /styles/           base.css            Design tokens, reset, typography
-                   components.css      Nav, hero, cards, explorer, footer
+                   components.css      Nav, hero, cards, explorer, placeholders, footer
 /scripts/          data.js             All resources (single source of truth)
-                   ui.js               Card rendering + the Explorer
-                   main.js             Nav, mobile menu, scroll animations
+                   ui.js               Card rendering, deadlines + the Explorer
+                   main.js             Nav, mobile menu, counters, scroll animations
 /assets/           favicon.svg
+                   og-cover.svg        Social-share (Open Graph) image
 CNAME                                  Custom domain
 ```
+
+### Adding or editing a resource
+
+Every resource is one object in [`scripts/data.js`](scripts/data.js) inside `PROGRAMS`,
+`SCHOLARSHIPS`, or `COMPETITIONS`. The file's header comment documents the full object shape:
+`fields` (engineering disciplines), `gradeMin`/`gradeMax`, `counties`, `cost`/`free`,
+a recurring `deadline` (`"MM-DD"`, which the site turns into the next upcoming date automatically),
+and the official `link`. The homepage stats and the contributor counter are computed from this file,
+so they update themselves the moment you add a listing.
 
 Pages use **clean, folder-based URLs** (`cvstemguide.com/about`, `/explore`, `/contribute`)
 served natively by GitHub Pages, with no router or redirects required. All resource data
@@ -110,4 +129,4 @@ This project is open source under the MIT License. Feel free to fork it, adapt i
 
 ---
 
-*Last updated: April 2026*
+*Last updated: June 2026*

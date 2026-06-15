@@ -3,9 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CV STEM Guide</title>
-<meta name="description" content="CV STEM Guide is a free, no-sign-up resource built by a Central Valley student to close the STEM information gap across 18 counties.">
+<title>About CV STEM Guide — Closing the Central Valley STEM Gap</title>
+<meta name="description" content="CV STEM Guide is a free, no-sign-up resource built by a Central Valley student to close the STEM information gap across 18 counties and every engineering discipline.">
 <link rel="canonical" href="https://cvstemguide.com/about">
+<meta name="theme-color" content="#1a6fa8">
+<!-- Open Graph -->
+<meta property="og:title" content="About CV STEM Guide">
+<meta property="og:description" content="A free, no-sign-up resource built by a Central Valley student to close the STEM information gap across 18 counties.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cvstemguide.com/about">
+<meta property="og:site_name" content="CV STEM Guide">
+<meta property="og:image" content="https://cvstemguide.com/assets/og-cover.svg">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About CV STEM Guide">
+<meta name="twitter:description" content="A free, no-sign-up resource built by a Central Valley student to close the STEM information gap.">
+<meta name="twitter:image" content="https://cvstemguide.com/assets/og-cover.svg">
 <link rel="icon" href="/assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,7 +55,13 @@
     <div class="section-head prose" data-animate>
       <span class="eyebrow">The gap</span>
       <h2 class="title">Why the Central Valley needs this</h2>
-      <p class="sub">The Central Valley is one of the most underserved regions in California for STEM access. More than 50% of students here identify as economically disadvantaged, and most schools report a shortage of advanced STEM programs. The opportunities exist, they're just hard to find. CV STEM Guide exists to close that information gap, for free, forever.</p>
+      <p class="sub">The Central Valley is one of the most underserved regions in California for STEM access. More than half of students here are economically disadvantaged, and most schools report a shortage of advanced STEM programs. The opportunities exist, they're just hard to find. CV STEM Guide exists to close that information gap, for free, forever.</p>
+      <p class="stat-sources">
+        Source for the economic-disadvantage figure: California free / reduced-price school-meal eligibility data via
+        <a href="https://www.kidsdata.org/topic/518/school-meals/table" target="_blank" rel="noopener">Kidsdata.org (Lucile Packard Foundation)</a>
+        and the <a href="https://www.cde.ca.gov/ds/ad/filessp.asp" target="_blank" rel="noopener">California Department of Education (Student Poverty FRPM data)</a>.
+        Central Valley counties report among the state's highest rates; exact figures vary by district and year.
+      </p>
     </div>
     <div class="feature-grid">
       <div class="feature" data-animate><div class="feature-ic">🆓</div><h3>Always free</h3><p>No account, no paywall, no ads. Every link goes straight to the official program.</p></div>
@@ -54,11 +73,25 @@
 
 <hr class="divider container">
 
-<!-- Counties -->
+<!-- Disciplines -->
 <section>
   <div class="container">
     <div class="section-head" data-animate>
       <span class="eyebrow">Coverage</span>
+      <h2 class="title">Every engineering discipline</h2>
+      <p class="sub">CV STEM Guide spans 11 engineering and computing fields — not just aerospace. Tap one to filter the explorer to it.</p>
+    </div>
+    <div class="county-grid" id="field-grid" data-animate></div>
+  </div>
+</section>
+
+<hr class="divider container">
+
+<!-- Counties -->
+<section>
+  <div class="container">
+    <div class="section-head" data-animate>
+      <span class="eyebrow">Counties</span>
       <h2 class="title">18 counties, one guide</h2>
       <p class="sub">Tap a county to jump into the explorer filtered to opportunities available there.</p>
     </div>
@@ -126,6 +159,23 @@
 <script src="/scripts/data.js"></script>
 <script src="/scripts/ui.js"></script>
 <script src="/scripts/main.js" defer></script>
+
+<!-- ============================================================
+     ANALYTICS  ·  privacy-friendly, cookieless  (see index.html
+     for full instructions on swapping in Plausible / GA4).
+     ============================================================ -->
 <script data-goatcounter="https://cvstemguide.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<!-- PLAUSIBLE — uncomment + set your domain:
+<script defer data-domain="REPLACE_WITH_YOUR_DOMAIN" src="https://plausible.io/js/script.js"></script>
+-->
+<!-- GOOGLE ANALYTICS 4 — uncomment + set your Measurement ID (G-XXXXXXXX):
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-REPLACE_WITH_YOUR_ID"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-REPLACE_WITH_YOUR_ID');
+</script>
+-->
 </body>
 </html>

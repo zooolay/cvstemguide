@@ -108,18 +108,45 @@
     items.forEach((el) => io.observe(el));
   };
 
+  /* ---------- Photo swap-in / graceful fallback ----------
+     Real photos (img[data-photo]) overlay a branded placeholder. If the image
+     file isn't there yet, hide the broken <img> so the placeholder shows. When
+     the hero photo loads successfully, hide the "replace me" marker. */
+  function initPhotoSwap() {
+    const marker = document.querySelector(".photo-marker");
+    const isHero = (img) => img.classList.contains("hero-photo");
+    const settle = (img, ok) => {
+      if (!ok) {                                   // file missing -> show placeholder
+        img.style.display = "none";
+        if (isHero(img) && marker) marker.style.display = "";   // reveal "replace me" marker
+        return;
+      }
+      if (isHero(img) && marker) marker.style.display = "none";  // real photo loaded -> hide marker
+    };
+    document.querySelectorAll("img[data-photo]").forEach((img) => {
+      if (img.complete) { settle(img, img.naturalWidth > 0); }
+      else {
+        img.addEventListener("load",  () => settle(img, true));
+        img.addEventListener("error", () => settle(img, false));
+      }
+    });
+  }
+
   /* ---------- Page wiring ---------- */
   function init() {
     const C = window.CVSTEM;
     if (C) {
+      C.injectCounts && C.injectCounts();          // set live counts before count-up runs
       C.renderFeatured && C.renderFeatured("#featured-grid");
       C.renderTips && C.renderTips("#tips-grid");
       C.renderCounties && C.renderCounties("#county-grid");
+      C.renderFieldPills && C.renderFieldPills("#field-grid");
       C.renderCountyMarquee && C.renderCountyMarquee("#county-marquee-track");
       C.initExplorer && C.initExplorer();
     }
     initParallax();
     initCounters();
+    initPhotoSwap();
     reveal(); // observe after dynamic content is injected
     const yr = document.getElementById("year");
     if (yr) yr.textContent = new Date().getFullYear();

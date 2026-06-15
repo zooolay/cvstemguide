@@ -8,38 +8,104 @@
 
   const BADGE = {
     free:        ["badge-free", "Free"],
+    paid:        ["badge-paid", "Paid"],
     online:      ["badge-online", "Online"],
     residential: ["badge-residential", "Residential"],
-    paid:        ["badge-paid", "Paid"],
     competition: ["badge-competition", "Competition"],
     scholarship: ["badge-scholarship", "Scholarship"],
+    "closing-soon": ["badge-closing", "Closing soon"],
   };
+
+  /* Field key -> human label lookup (built once from CVSTEM.FIELDS). */
+  const FIELD_LABEL = {};
+  (C.FIELDS || []).forEach((f) => { FIELD_LABEL[f.key] = f.label; });
 
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) =>
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
-  function badgesHTML(list) {
-    return (list || []).map((b) => {
-      const [cls, label] = BADGE[b] || ["", b];
-      return `<span class="badge ${cls}">${esc(label)}</span>`;
-    }).join("");
+  /* ---------- Deadline helpers (recurring month-day -> next date) ---------- */
+  const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+  function startOfToday() {
+    const n = new Date();
+    return new Date(n.getFullYear(), n.getMonth(), n.getDate());
+  }
+  /* Given "MM-DD", return the next future occurrence as a Date. */
+  function nextDeadline(mmdd) {
+    if (!mmdd) return null;
+    const [m, d] = mmdd.split("-").map(Number);
+    if (!m || !d) return null;
+    const today = startOfToday();
+    let dt = new Date(today.getFullYear(), m - 1, d);
+    if (dt < today) dt = new Date(today.getFullYear() + 1, m - 1, d);
+    return dt;
+  }
+  function daysUntil(date) {
+    return Math.round((date - startOfToday()) / 86400000);
+  }
+  /* Decorates an item with computed deadline info (cached on first use). */
+  function withDeadline(item) {
+    if (item._dl !== undefined) return item;
+    const dt = nextDeadline(item.deadline);
+    item._dl = dt;
+    item._dlDays = dt ? daysUntil(dt) : null;
+    item._soon = dt ? (item._dlDays >= 0 && item._dlDays <= 30) : false;
+    return item;
+  }
+  C.daysUntilDeadline = (item) => withDeadline(item)._dlDays;
+  C.isClosingSoon = (item) => withDeadline(item)._soon;
+
+  function badgesHTML(item) {
+    const list = (item.badges || []).slice();
+    list.unshift(item.free ? "free" : "paid");
+    if (withDeadline(item)._soon) list.push("closing-soon");
+    // de-dupe while preserving order
+    const seen = {};
+    return list.filter((b) => (seen[b] ? false : (seen[b] = true)))
+      .map((b) => {
+        const [cls, label] = BADGE[b] || ["", b];
+        return `<span class="badge ${cls}">${esc(label)}</span>`;
+      }).join("");
+  }
+
+  function fieldTagsHTML(item) {
+    return (item.fields || [])
+      .filter((k) => k !== "general")
+      .slice(0, 4)
+      .map((k) => `<span class="field-tag">${esc(FIELD_LABEL[k] || k)}</span>`)
+      .join("");
+  }
+
+  function deadlineMetaHTML(item) {
+    withDeadline(item);
+    if (item._dl) {
+      const lbl = `${MONTHS[item._dl.getMonth()]} ${item._dl.getDate()}`;
+      const rel = item._soon
+        ? ` <strong class="soon-text">· ${item._dlDays === 0 ? "today" : "in " + item._dlDays + " day" + (item._dlDays === 1 ? "" : "s")}</strong>`
+        : "";
+      return `<span>📅 Next deadline ~${lbl}${rel}</span>`;
+    }
+    return `<span>📅 ${esc(item.timing)}</span>`;
   }
 
   /* Public: renders one resource card. */
   C.cardHTML = function (item) {
-    return `<article class="card">
+    withDeadline(item);
+    const fields = fieldTagsHTML(item);
+    return `<article class="card${item._soon ? " card--soon" : ""}">
       <div class="card-top">
-        <div class="card-ic" aria-hidden="true">${item.icon}</div>
-        <div class="card-badges">${badgesHTML(item.badges)}</div>
+        <div class="card-ic" aria-hidden="true">${item.icon || "📌"}</div>
+        <div class="card-badges">${badgesHTML(item)}</div>
       </div>
       ${item.type ? `<div class="card-type">${esc(item.type)}</div>` : ""}
       <h3>${esc(item.title)}</h3>
       <div class="card-org">${esc(item.org)}</div>
       <p class="card-desc">${esc(item.desc)}</p>
+      ${fields ? `<div class="card-fields">${fields}</div>` : ""}
       <div class="card-meta">
         <span>🎓 Grades ${esc(item.grades)}</span>
         <span>💰 ${esc(item.cost)}</span>
-        <span>📅 ${esc(item.timing)}</span>
+        ${deadlineMetaHTML(item)}
       </div>
       <a class="card-link" href="${esc(item.link)}" target="_blank" rel="noopener">
         Learn more <span class="arrow" aria-hidden="true">→</span>
@@ -51,7 +117,10 @@
   C.renderFeatured = function (selector, count = 3) {
     const el = document.querySelector(selector);
     if (!el) return;
-    const featured = C.ALL.filter((x) => x.tags.includes("free")).slice(0, count);
+    const free = C.ALL.filter((x) => x.free);
+    // Prefer free items closing soon, then other free standouts.
+    const soon = free.filter((x) => C.isClosingSoon(x));
+    const featured = soon.concat(free.filter((x) => !C.isClosingSoon(x))).slice(0, count);
     el.innerHTML = featured.map(C.cardHTML).join("");
   };
 
@@ -60,18 +129,37 @@
     const grid = document.getElementById("explore-grid");
     if (!grid) return;
 
-    const state = { type: "all", tag: "all", county: "all", q: "" };
+    const state = { type: "all", field: "all", county: "all", grade: "all", free: false, soon: false, q: "", sort: "featured" };
 
     const matchType   = (i) => state.type === "all" || i.type.toLowerCase() === state.type;
-    const matchTag    = (i) => state.tag === "all" || i.tags.includes(state.tag);
+    const matchField  = (i) => state.field === "all" || (i.fields || []).includes(state.field);
     const matchCounty = (i) => state.county === "all" || i.counties === "all" || i.counties.includes(state.county);
+    const matchGrade  = (i) => state.grade === "all" || (i.gradeMin <= +state.grade && +state.grade <= i.gradeMax);
+    const matchFree   = (i) => !state.free || i.free;
+    const matchSoon   = (i) => !state.soon || C.isClosingSoon(i);
     const matchSearch = (i) => !state.q ||
-      (i.title + i.desc + i.org + i.type + i.tags.join(" ")).toLowerCase().includes(state.q);
+      (i.title + i.desc + i.org + i.type + (i.fields || []).map((k) => FIELD_LABEL[k] || k).join(" ")).toLowerCase().includes(state.q);
+
+    function sortItems(items) {
+      if (state.sort === "deadline") {
+        return items.slice().sort((a, b) => {
+          const da = C.daysUntilDeadline(a), db = C.daysUntilDeadline(b);
+          if (da == null && db == null) return 0;
+          if (da == null) return 1;       // rolling/varies goes last
+          if (db == null) return -1;
+          return da - db;
+        });
+      }
+      // "featured": closing-soon first, otherwise original data order
+      return items.slice().sort((a, b) => (C.isClosingSoon(b) ? 1 : 0) - (C.isClosingSoon(a) ? 1 : 0));
+    }
 
     const countEl = document.getElementById("result-count");
 
     function render() {
-      const items = C.ALL.filter((i) => matchType(i) && matchTag(i) && matchCounty(i) && matchSearch(i));
+      let items = C.ALL.filter((i) =>
+        matchType(i) && matchField(i) && matchCounty(i) && matchGrade(i) && matchFree(i) && matchSoon(i) && matchSearch(i));
+      items = sortItems(items);
       if (countEl) {
         countEl.textContent = `${items.length} ${items.length === 1 ? "result" : "results"}`;
       }
@@ -85,8 +173,19 @@
       grid.innerHTML = items.map(C.cardHTML).join("");
     }
 
-    /* Chip groups (type + tag) via event delegation */
+    /* Build the discipline (field) chip group from CVSTEM.FIELDS. */
+    const fieldChips = document.getElementById("field-chips");
+    if (fieldChips) {
+      fieldChips.innerHTML =
+        `<button class="chip active" data-value="all" aria-pressed="true">All fields</button>` +
+        C.FIELDS.map((f) =>
+          `<button class="chip" data-value="${f.key}" aria-pressed="false">${esc(f.label)}</button>`).join("");
+    }
+
+    /* Chip groups (type + field) via event delegation */
     document.querySelectorAll(".chips").forEach((group) => {
+      const key = group.dataset.filter;
+      if (!key) return;
       group.addEventListener("click", (e) => {
         const chip = e.target.closest(".chip");
         if (!chip) return;
@@ -96,7 +195,7 @@
         });
         chip.classList.add("active");
         chip.setAttribute("aria-pressed", "true");
-        state[group.dataset.filter] = chip.dataset.value;
+        state[key] = chip.dataset.value;
         render();
       });
     });
@@ -110,26 +209,69 @@
       county.addEventListener("change", () => { state.county = county.value; render(); });
     }
 
+    /* Grade dropdown */
+    const grade = document.getElementById("grade-select");
+    if (grade) {
+      grade.addEventListener("change", () => { state.grade = grade.value; render(); });
+    }
+
+    /* Sort dropdown */
+    const sort = document.getElementById("sort-select");
+    if (sort) {
+      sort.addEventListener("change", () => { state.sort = sort.value; render(); });
+    }
+
+    /* Toggles: free only + closing soon */
+    const freeToggle = document.getElementById("free-toggle");
+    if (freeToggle) {
+      freeToggle.addEventListener("change", () => { state.free = freeToggle.checked; render(); });
+    }
+    const soonToggle = document.getElementById("soon-toggle");
+    if (soonToggle) {
+      soonToggle.addEventListener("change", () => { state.soon = soonToggle.checked; render(); });
+    }
+
     /* Search */
     const search = document.getElementById("explore-search");
     if (search) {
       search.addEventListener("input", () => { state.q = search.value.trim().toLowerCase(); render(); });
     }
 
-    /* Deep-link support: /explore?type=scholarship&county=Fresno */
+    /* Deep links: /explore?type=scholarship&county=Fresno&field=civil&free=1&soon=1 */
     const params = new URLSearchParams(location.search);
     const preType = params.get("type");
     if (preType) {
       const chip = document.querySelector(`.chips--type .chip[data-value="${preType.toLowerCase()}"]`);
       if (chip) chip.click();
     }
+    const preField = params.get("field");
+    if (preField) {
+      const chip = document.querySelector(`#field-chips .chip[data-value="${preField.toLowerCase()}"]`);
+      if (chip) chip.click();
+    }
     const preCounty = params.get("county");
     if (preCounty && county && C.COUNTIES.includes(preCounty)) {
-      county.value = preCounty;
-      state.county = preCounty;
+      county.value = preCounty; state.county = preCounty;
     }
+    if (params.get("free") === "1" && freeToggle) { freeToggle.checked = true; state.free = true; }
+    if (params.get("soon") === "1" && soonToggle) { soonToggle.checked = true; state.soon = true; }
 
     render();
+  };
+
+  /* ---------- Inject live counts (stats + contributor counter) ---------- */
+  C.injectCounts = function () {
+    document.querySelectorAll("[data-count-key]").forEach((el) => {
+      const v = C.COUNTS[el.dataset.countKey];
+      if (v == null) return;
+      el.dataset.countTo = String(v);          // main.js animates this
+      if (!el.textContent.trim()) el.textContent = String(v);
+    });
+    // Plain text counters (no animation)
+    document.querySelectorAll("[data-count-text]").forEach((el) => {
+      const v = C.COUNTS[el.dataset.countText];
+      if (v != null) el.textContent = String(v);
+    });
   };
 
   /* ---------- Tips grid ---------- */
@@ -151,11 +293,19 @@
       `<a class="county-pill" href="/explore?county=${encodeURIComponent(c)}">${c}</a>`).join("");
   };
 
+  /* ---------- Discipline pills (About / Home) ---------- */
+  C.renderFieldPills = function (selector) {
+    const el = document.querySelector(selector);
+    if (!el) return;
+    el.innerHTML = C.FIELDS.filter((f) => f.key !== "general").map((f) =>
+      `<a class="county-pill" href="/explore?field=${encodeURIComponent(f.key)}">${f.label}</a>`).join("");
+  };
+
   /* ---------- Scrolling county band (kinetic) ---------- */
   C.renderCountyMarquee = function (selector) {
     const el = document.querySelector(selector);
     if (!el) return;
     const once = C.COUNTIES.map((c) => `<span class="item">${c}</span>`).join("");
-    el.innerHTML = once + once; // duplicated set → seamless -50% loop
+    el.innerHTML = once + once; // duplicated set -> seamless -50% loop
   };
 })();

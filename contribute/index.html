@@ -3,9 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CV STEM Guide</title>
-<meta name="description" content="Know a STEM program, scholarship, or competition for Central Valley students? Submit it in two minutes to help another student find it.">
+<title>Contribute a Resource — CV STEM Guide</title>
+<meta name="description" content="Know a STEM program, scholarship, or competition for Central Valley students? Submit it in two minutes to help another student find it. No account required.">
 <link rel="canonical" href="https://cvstemguide.com/contribute">
+<meta name="theme-color" content="#1a6fa8">
+<!-- Open Graph -->
+<meta property="og:title" content="Contribute a Resource — CV STEM Guide">
+<meta property="og:description" content="Know a STEM program, scholarship, or competition for Central Valley students? Submit it in two minutes.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cvstemguide.com/contribute">
+<meta property="og:site_name" content="CV STEM Guide">
+<meta property="og:image" content="https://cvstemguide.com/assets/og-cover.svg">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Contribute a Resource — CV STEM Guide">
+<meta name="twitter:description" content="Know a STEM program, scholarship, or competition for Central Valley students? Submit it in two minutes.">
+<meta name="twitter:image" content="https://cvstemguide.com/assets/og-cover.svg">
 <link rel="icon" href="/assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,17 +53,38 @@
 <section>
   <div class="container">
     <div class="steps">
-      <div class="step" data-animate><h3>Gather the details</h3><p>Program name, the organization, an official link, eligible grades, cost, counties served, and a short 2 to 3 sentence description.</p></div>
+      <div class="step" data-animate><h3>Gather the details</h3><p>Program name, the organization, an official link, eligible grades, engineering field, cost, counties served, deadline, and a short 2 to 3 sentence description.</p></div>
       <div class="step" data-animate data-delay="1"><h3>Email it in</h3><p>Send the details to our inbox and that's the whole process. No account, no form, no friction.</p></div>
       <div class="step" data-animate data-delay="2"><h3>It goes live</h3><p>Submissions are reviewed and added on a rolling basis, usually within a couple of weeks.</p></div>
     </div>
+
+    <!-- Contributor / resource counter (live from data.js) -->
+    <div class="counter-band" data-animate>
+      <div class="counter-item">
+        <div class="counter-num" data-count-key="total" data-count-to="0">0</div>
+        <div class="counter-label">Resources listed</div>
+      </div>
+      <div class="counter-item">
+        <div class="counter-num" data-count-key="programs" data-count-to="0">0</div>
+        <div class="counter-label">Programs</div>
+      </div>
+      <div class="counter-item">
+        <div class="counter-num" data-count-key="scholarships" data-count-to="0">0</div>
+        <div class="counter-label">Scholarships</div>
+      </div>
+      <div class="counter-item">
+        <div class="counter-num" data-count-key="competitions" data-count-to="0">0</div>
+        <div class="counter-label">Competitions</div>
+      </div>
+    </div>
+    <p class="text-center muted" style="margin-top:1rem;font-size:var(--fs-sm)">Every count above grows the moment a submitted resource goes live. Thank you for helping it grow.</p>
 
     <div class="feature-grid" style="margin:3rem auto 0;max-width:580px">
       <div class="feature" data-animate>
         <div class="feature-ic">✉️</div>
         <h3>Email the details</h3>
-        <p>Send the program name, organization, official link, eligible grades, cost, counties served, and a brief 2 to 3 sentence description. It'll be added on the next review pass.</p>
-        <p style="margin-top:1.2rem"><a class="btn btn-primary" href="mailto:support@cvstemguide.com?subject=New%20resource%20for%20CV%20STEM%20Guide">Email support@cvstemguide.com →</a></p>
+        <p>Send the program name, organization, official link, eligible grades, engineering field, cost, counties served, deadline, and a brief 2 to 3 sentence description. It'll be added on the next review pass.</p>
+        <p style="margin-top:1.2rem"><a class="btn btn-primary" href="mailto:support@cvstemguide.com?subject=New%20resource%20for%20CV%20STEM%20Guide&body=Program%20name%3A%0AOrganization%3A%0AOfficial%20link%3A%0AEligible%20grades%3A%0AEngineering%20field%3A%0ACost%20(free%2Fpaid)%3A%0ACounties%20served%3A%0ADeadline%3A%0ADescription%20(2-3%20sentences)%3A">Email support@cvstemguide.com →</a></p>
       </div>
     </div>
 
@@ -94,6 +128,23 @@
 <script src="/scripts/data.js"></script>
 <script src="/scripts/ui.js"></script>
 <script src="/scripts/main.js" defer></script>
+
+<!-- ============================================================
+     ANALYTICS  ·  privacy-friendly, cookieless  (see index.html
+     for full instructions on swapping in Plausible / GA4).
+     ============================================================ -->
 <script data-goatcounter="https://cvstemguide.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<!-- PLAUSIBLE — uncomment + set your domain:
+<script defer data-domain="REPLACE_WITH_YOUR_DOMAIN" src="https://plausible.io/js/script.js"></script>
+-->
+<!-- GOOGLE ANALYTICS 4 — uncomment + set your Measurement ID (G-XXXXXXXX):
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-REPLACE_WITH_YOUR_ID"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-REPLACE_WITH_YOUR_ID');
+</script>
+-->
 </body>
 </html>

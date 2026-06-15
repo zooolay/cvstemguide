@@ -1,0 +1,7 @@
+# CV STEM Guide — robots.txt
+# A free, public, static directory. Everything is meant to be indexed.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://cvstemguide.com/sitemap.xml

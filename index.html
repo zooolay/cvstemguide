@@ -3,13 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CV STEM Guide</title>
-<meta name="description" content="A free guide connecting students across 18 Central Valley counties to real STEM programs, scholarships, and competitions. No cost. No sign-up. Just opportunities.">
+<title>CV STEM Guide — Free STEM Programs & Scholarships for Central Valley Students</title>
+<meta name="description" content="A free guide connecting students across 18 Central Valley counties to real STEM programs, scholarships, and competitions in every engineering discipline. No cost. No sign-up. Just opportunities.">
 <link rel="canonical" href="https://cvstemguide.com/">
-<meta property="og:title" content="CV STEM Guide">
-<meta property="og:description" content="Free STEM programs, scholarships, and competitions for Central Valley students.">
+<meta name="theme-color" content="#1a6fa8">
+<!-- Open Graph -->
+<meta property="og:title" content="CV STEM Guide — Free STEM Opportunities for Central Valley Students">
+<meta property="og:description" content="Real STEM programs, scholarships, and competitions across every engineering discipline, for students in all 18 Central Valley counties. Free, no sign-up.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://cvstemguide.com/">
+<meta property="og:site_name" content="CV STEM Guide">
+<meta property="og:image" content="https://cvstemguide.com/assets/og-cover.svg">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CV STEM Guide — Free STEM Opportunities for Central Valley Students">
+<meta name="twitter:description" content="Real STEM programs, scholarships, and competitions across every engineering discipline. Free, no sign-up.">
+<meta name="twitter:image" content="https://cvstemguide.com/assets/og-cover.svg">
 <link rel="icon" href="/assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,13 +47,18 @@
 <section class="hero">
   <div class="hero-media">
     <div class="hero-parallax" data-parallax="0.18">
-      <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&q=80" alt="Golden Central Valley farmland at sunset" fetchpriority="high">
+      <!-- REAL PHOTO: drop a ~1600px-wide landscape image at /assets/hero.jpg
+           (local farmland, a Valley campus, students at a STEM event). Until that
+           file exists, the branded gradient placeholder below shows automatically. -->
+      <div class="hero-ph" aria-hidden="true"></div>
+      <img class="hero-photo" data-photo src="/assets/hero.jpg" alt="Central Valley landscape" fetchpriority="high">
     </div>
   </div>
+  <span class="photo-marker" style="display:none">Replace with real CV photo</span>
   <div class="container hero-inner">
     <span class="eyebrow hero-eyebrow">Built for the Central Valley</span>
     <h1>Your future in STEM<br>starts <em>right here.</em></h1>
-    <p class="hero-sub">A free guide connecting students across 18 Central Valley counties to real programs, scholarships, and competitions. No cost. No sign-up. Just opportunities.</p>
+    <p class="hero-sub">A free guide connecting students across 18 Central Valley counties to real programs, scholarships, and competitions — across every engineering discipline. No cost. No sign-up. Just opportunities.</p>
     <div class="hero-actions">
       <a href="/explore" class="btn btn-primary btn-lg">Explore opportunities</a>
       <a href="/explore?type=scholarship" class="btn btn-light btn-lg">Find scholarships</a>
@@ -55,9 +69,9 @@
 <!-- ============ STATS ============ -->
 <div class="container">
   <div class="stats">
-    <div class="stat" data-animate><div class="stat-num" data-count-to="18">18</div><div class="stat-label">Counties covered</div></div>
-    <div class="stat" data-animate data-delay="1"><div class="stat-num" data-count-to="20" data-suffix="+">20+</div><div class="stat-label">Opportunities listed</div></div>
-    <div class="stat" data-animate data-delay="2"><div class="stat-num" data-count-to="500" data-prefix="$" data-suffix="K+">$500K+</div><div class="stat-label">In scholarships</div></div>
+    <div class="stat" data-animate><div class="stat-num" data-count-key="counties" data-count-to="18">18</div><div class="stat-label">Counties covered</div></div>
+    <div class="stat" data-animate data-delay="1"><div class="stat-num" data-count-key="total" data-suffix="+" data-count-to="50">50+</div><div class="stat-label">Opportunities listed</div></div>
+    <div class="stat" data-animate data-delay="2"><div class="stat-num" data-count-key="fields" data-count-to="11">11</div><div class="stat-label">Engineering fields</div></div>
     <div class="stat" data-animate data-delay="3"><div class="stat-num" data-count-to="100" data-suffix="%">100%</div><div class="stat-label">Free to use</div></div>
   </div>
 </div>
@@ -69,13 +83,33 @@
       <span class="eyebrow">Why this exists</span>
       <h2 class="title">One place for opportunities that are actually within reach.</h2>
       <p class="sub">The Central Valley is one of the most underserved regions in California for STEM access. More than half of local students are economically disadvantaged, and most schools report a shortage of advanced STEM programs. CV STEM Guide closes that information gap.</p>
+      <p class="stat-sources">
+        Source for the economic-disadvantage figure: California free / reduced-price school-meal eligibility data via
+        <a href="https://www.kidsdata.org/topic/518/school-meals/table" target="_blank" rel="noopener">Kidsdata.org (Lucile Packard Foundation)</a>
+        and the <a href="https://www.cde.ca.gov/ds/ad/filessp.asp" target="_blank" rel="noopener">California Department of Education (Student Poverty FRPM data)</a>.
+        Central Valley counties report among the state's highest rates (many districts 60–85%); exact figures vary by district and year.
+      </p>
     </div>
     <div class="feature-grid">
-      <div class="feature" data-animate><div class="feature-ic">🎓</div><h3>Programs</h3><p>Free and paid programs for grades 6 to 12: residential summer schools, university research, and online courses.</p></div>
-      <div class="feature" data-animate data-delay="1"><div class="feature-ic">💰</div><h3>Scholarships</h3><p>Local and statewide scholarships built specifically for Central Valley students pursuing STEM degrees.</p></div>
+      <div class="feature" data-animate><div class="feature-ic">🎓</div><h3>Programs</h3><p>Free and paid programs for grades 6 to 12: residential summer schools, national-lab internships, university research, and online courses.</p></div>
+      <div class="feature" data-animate data-delay="1"><div class="feature-ic">💰</div><h3>Scholarships</h3><p>Local and statewide scholarships for Central Valley students pursuing any engineering or STEM degree.</p></div>
       <div class="feature" data-animate data-delay="2"><div class="feature-ic">🏆</div><h3>Competitions</h3><p>Free, high-impact competitions that carry real weight on a college application.</p></div>
       <div class="feature" data-animate data-delay="3"><div class="feature-ic">🧭</div><h3>Real advice</h3><p>Straight talk on how to actually use these opportunities to strengthen your application.</p></div>
     </div>
+  </div>
+</section>
+
+<hr class="divider container">
+
+<!-- ============ EVERY DISCIPLINE ============ -->
+<section>
+  <div class="container">
+    <div class="section-head" data-animate>
+      <span class="eyebrow">Every discipline</span>
+      <h2 class="title">Not just aerospace — every kind of engineering.</h2>
+      <p class="sub">From mechanical and civil to chemical, nuclear, and the environmental and agricultural engineering that defines the Valley. Tap a field to jump straight into the explorer.</p>
+    </div>
+    <div class="county-grid" id="field-grid" data-animate></div>
   </div>
 </section>
 
@@ -85,19 +119,24 @@
     <span class="eyebrow">From the Valley</span>
     <h2 class="title">Real students. Real opportunities.</h2>
   </div>
+  <!-- REAL PHOTOS: drop 5 images (~720px wide, roughly 3:2) into /assets named
+       valley-1.jpg … valley-5.jpg. Each appears automatically once the file
+       exists; until then the labeled gradient placeholder shows. The set is
+       duplicated below so the strip scrolls in a seamless loop — reuse the same
+       5 files. -->
   <div class="marquee marquee--images" aria-hidden="true">
     <div class="marquee-track">
-      <figure class="marquee-img"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=720&q=80" alt="" loading="lazy"><figcaption>Central Valley</figcaption></figure>
-      <figure class="marquee-img"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=720&q=80" alt="" loading="lazy"><figcaption>Online programs</figcaption></figure>
-      <figure class="marquee-img"><img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=720&q=80" alt="" loading="lazy"><figcaption>Summer schools</figcaption></figure>
-      <figure class="marquee-img"><img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=720&q=80" alt="" loading="lazy"><figcaption>Scholarships</figcaption></figure>
-      <figure class="marquee-img"><img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=720&q=80" alt="" loading="lazy"><figcaption>Research &amp; labs</figcaption></figure>
-      <!-- duplicate set for a seamless loop -->
-      <figure class="marquee-img"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=720&q=80" alt="" loading="lazy"><figcaption>Central Valley</figcaption></figure>
-      <figure class="marquee-img"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=720&q=80" alt="" loading="lazy"><figcaption>Online programs</figcaption></figure>
-      <figure class="marquee-img"><img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=720&q=80" alt="" loading="lazy"><figcaption>Summer schools</figcaption></figure>
-      <figure class="marquee-img"><img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=720&q=80" alt="" loading="lazy"><figcaption>Scholarships</figcaption></figure>
-      <figure class="marquee-img"><img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=720&q=80" alt="" loading="lazy"><figcaption>Research &amp; labs</figcaption></figure>
+      <figure class="marquee-img"><div class="photo-ph"><div class="photo-ph-inner"><span class="cam">📷</span><span class="photo-ph-label">Replace with real CV photo</span><span class="photo-ph-sub">Central Valley</span></div></div><img class="ph-photo" data-photo src="/assets/valley-1.jpg" alt="" loading="lazy"></figure>
+      <figure class="marquee-img"><div class="photo-ph"><div class="photo-ph-inner"><span class="cam">📷</span><span class="photo-ph-label">Replace with real CV photo</span><span class="photo-ph-sub">Online programs</span></div></div><img class="ph-photo" data-photo src="/assets/valley-2.jpg" alt="" loading="lazy"></figure>
+      <figure class="marquee-img"><div class="photo-ph"><div class="photo-ph-inner"><span class="cam">📷</span><span class="photo-ph-label">Replace with real CV photo</span><span class="photo-ph-sub">Summer schools</span></div></div><img class="ph-photo" data-photo src="/assets/valley-3.jpg" alt="" loading="lazy"></figure>
+      <figure class="marquee-img"><div class="photo-ph"><div class="photo-ph-inner"><span class="cam">📷</span><span class="photo-ph-label">Replace with real CV photo</span><span class="photo-ph-sub">Scholarships</span></div></div><img class="ph-photo" data-photo src="/assets/valley-4.jpg" alt="" loading="lazy"></figure>
+      <figure class="marquee-img"><div class="photo-ph"><div class="photo-ph-inner"><span class="cam">📷</span><span class="photo-ph-label">Replace with real CV photo</span><span class="photo-ph-sub">Research &amp; labs</span></div></div><img class="ph-photo" data-photo src="/assets/valley-5.jpg" alt="" loading="lazy"></figure>
+      <!-- duplicate set for a seamless loop (same 5 files) -->
+      <figure class="marquee-img"><div class="photo-ph"><div class="photo-ph-inner"><span class="cam">📷</span><span class="photo-ph-label">Replace with real CV photo</span><span class="photo-ph-sub">Central Valley</span></div></div><img class="ph-photo" data-photo src="/assets/valley-1.jpg" alt="" loading="lazy"></figure>
+      <figure class="marquee-img"><div class="photo-ph"><div class="photo-ph-inner"><span class="cam">📷</span><span class="photo-ph-label">Replace with real CV photo</span><span class="photo-ph-sub">Online programs</span></div></div><img class="ph-photo" data-photo src="/assets/valley-2.jpg" alt="" loading="lazy"></figure>
+      <figure class="marquee-img"><div class="photo-ph"><div class="photo-ph-inner"><span class="cam">📷</span><span class="photo-ph-label">Replace with real CV photo</span><span class="photo-ph-sub">Summer schools</span></div></div><img class="ph-photo" data-photo src="/assets/valley-3.jpg" alt="" loading="lazy"></figure>
+      <figure class="marquee-img"><div class="photo-ph"><div class="photo-ph-inner"><span class="cam">📷</span><span class="photo-ph-label">Replace with real CV photo</span><span class="photo-ph-sub">Scholarships</span></div></div><img class="ph-photo" data-photo src="/assets/valley-4.jpg" alt="" loading="lazy"></figure>
+      <figure class="marquee-img"><div class="photo-ph"><div class="photo-ph-inner"><span class="cam">📷</span><span class="photo-ph-label">Replace with real CV photo</span><span class="photo-ph-sub">Research &amp; labs</span></div></div><img class="ph-photo" data-photo src="/assets/valley-5.jpg" alt="" loading="lazy"></figure>
     </div>
   </div>
 </section>
@@ -112,8 +151,8 @@
       <h2 class="title">Three steps. No account required.</h2>
     </div>
     <div class="steps">
-      <div class="step" data-animate><h3>Pick your county</h3><p>Filter the explorer to show only opportunities open to students in your part of the Valley.</p></div>
-      <div class="step" data-animate data-delay="1"><h3>Search & filter</h3><p>Narrow by type, topic, or keyword to find programs that fit your grade and interests.</p></div>
+      <div class="step" data-animate><h3>Pick your county & field</h3><p>Filter the explorer to opportunities open to students in your part of the Valley, in the engineering discipline you care about.</p></div>
+      <div class="step" data-animate data-delay="1"><h3>Search & sort by deadline</h3><p>Narrow by type, grade, or cost, and surface what's closing soon so you never miss an application window.</p></div>
       <div class="step" data-animate data-delay="2"><h3>Apply directly</h3><p>Every card links straight to the official site. No middlemen, no sign-up, no cost.</p></div>
     </div>
   </div>
@@ -184,6 +223,28 @@
 <script src="/scripts/data.js"></script>
 <script src="/scripts/ui.js"></script>
 <script src="/scripts/main.js" defer></script>
+
+<!-- ============================================================
+     ANALYTICS  ·  privacy-friendly, cookieless
+     Ships with GoatCounter (lightweight, GDPR-friendly), already
+     pointed at cvstemguide.goatcounter.com.
+     ▸ Using your own GoatCounter? change the subdomain below.
+     ▸ Prefer Plausible or Google Analytics 4? Comment out the
+       GoatCounter line and uncomment ONE block, then paste your
+       own domain / Measurement ID where marked.
+     ============================================================ -->
 <script data-goatcounter="https://cvstemguide.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<!-- PLAUSIBLE — uncomment + set your domain:
+<script defer data-domain="REPLACE_WITH_YOUR_DOMAIN" src="https://plausible.io/js/script.js"></script>
+-->
+<!-- GOOGLE ANALYTICS 4 — uncomment + set your Measurement ID (G-XXXXXXXX):
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-REPLACE_WITH_YOUR_ID"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-REPLACE_WITH_YOUR_ID');
+</script>
+-->
 </body>
 </html>
