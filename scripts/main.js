@@ -1,11 +1,6 @@
-/* ============================================================
-   CV STEM Guide - Site behavior (runs on every page)
-   Nav scroll state · mobile menu · scroll-reveal · smooth scroll
-   ============================================================ */
 (function () {
   "use strict";
 
-  /* ---------- Nav: elevate on scroll ---------- */
   const nav = document.querySelector(".nav");
   if (nav) {
     const onScroll = () => nav.classList.toggle("scrolled", window.scrollY > 8);
@@ -13,7 +8,6 @@
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
-  /* ---------- Mobile menu ---------- */
   const toggle = document.querySelector(".nav-toggle");
   const links = document.querySelector(".nav-links");
   if (toggle && links) {
@@ -30,7 +24,6 @@
     window.addEventListener("resize", () => { if (window.innerWidth > 720) close(); });
   }
 
-  /* ---------- Smooth scroll for same-page anchors ---------- */
   document.querySelectorAll('a[href^="#"]').forEach((a) => {
     a.addEventListener("click", (e) => {
       const id = a.getAttribute("href");
@@ -45,7 +38,6 @@
 
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* ---------- Hero parallax (subtle, scroll-driven) ---------- */
   function initParallax() {
     if (reduce) return;
     const layers = document.querySelectorAll("[data-parallax]");
@@ -65,7 +57,6 @@
     update();
   }
 
-  /* ---------- Count-up stats ---------- */
   function initCounters() {
     const nums = document.querySelectorAll("[data-count-to]");
     if (!nums.length) return;
@@ -77,7 +68,7 @@
       const dur = 1400, start = performance.now();
       const tick = (now) => {
         const p = Math.min((now - start) / dur, 1);
-        const eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
+        const eased = 1 - Math.pow(1 - p, 3);
         el.textContent = prefix + Math.round(target * eased) + suffix;
         if (p < 1) requestAnimationFrame(tick);
       };
@@ -90,7 +81,6 @@
     nums.forEach((el) => io.observe(el));
   }
 
-  /* ---------- Scroll-reveal animations ---------- */
   const reveal = () => {
     const items = document.querySelectorAll("[data-animate]");
     if (reduce || !("IntersectionObserver" in window)) {
@@ -108,20 +98,16 @@
     items.forEach((el) => io.observe(el));
   };
 
-  /* ---------- Photo swap-in / graceful fallback ----------
-     Real photos (img[data-photo]) overlay a branded placeholder. If the image
-     file isn't there yet, hide the broken <img> so the placeholder shows. When
-     the hero photo loads successfully, hide the "replace me" marker. */
   function initPhotoSwap() {
     const marker = document.querySelector(".photo-marker");
     const isHero = (img) => img.classList.contains("hero-photo");
     const settle = (img, ok) => {
-      if (!ok) {                                   // file missing -> show placeholder
+      if (!ok) {
         img.style.display = "none";
-        if (isHero(img) && marker) marker.style.display = "";   // reveal "replace me" marker
+        if (isHero(img) && marker) marker.style.display = "";
         return;
       }
-      if (isHero(img) && marker) marker.style.display = "none";  // real photo loaded -> hide marker
+      if (isHero(img) && marker) marker.style.display = "none";
     };
     document.querySelectorAll("img[data-photo]").forEach((img) => {
       if (img.complete) { settle(img, img.naturalWidth > 0); }
@@ -132,11 +118,10 @@
     });
   }
 
-  /* ---------- Page wiring ---------- */
   function init() {
     const C = window.CVSTEM;
     if (C) {
-      C.injectCounts && C.injectCounts();          // set live counts before count-up runs
+      C.injectCounts && C.injectCounts();
       C.renderFeatured && C.renderFeatured("#featured-grid");
       C.renderTips && C.renderTips("#tips-grid");
       C.renderCounties && C.renderCounties("#county-grid");
@@ -147,7 +132,7 @@
     initParallax();
     initCounters();
     initPhotoSwap();
-    reveal(); // observe after dynamic content is injected
+    reveal();
     const yr = document.getElementById("year");
     if (yr) yr.textContent = new Date().getFullYear();
   }

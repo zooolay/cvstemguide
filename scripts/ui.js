@@ -1,7 +1,3 @@
-/* ============================================================
-   CV STEM Guide - UI rendering & the unified Explorer
-   Depends on data.js (window.CVSTEM). No inline handlers.
-   ============================================================ */
 (function () {
   const C = window.CVSTEM;
   if (!C) return;
@@ -16,21 +12,18 @@
     "closing-soon": ["badge-closing", "Closing soon"],
   };
 
-  /* Field key -> human label lookup (built once from CVSTEM.FIELDS). */
   const FIELD_LABEL = {};
   (C.FIELDS || []).forEach((f) => { FIELD_LABEL[f.key] = f.label; });
 
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) =>
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
-  /* ---------- Deadline helpers (recurring month-day -> next date) ---------- */
   const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
   function startOfToday() {
     const n = new Date();
     return new Date(n.getFullYear(), n.getMonth(), n.getDate());
   }
-  /* Given "MM-DD", return the next future occurrence as a Date. */
   function nextDeadline(mmdd) {
     if (!mmdd) return null;
     const [m, d] = mmdd.split("-").map(Number);
@@ -43,7 +36,6 @@
   function daysUntil(date) {
     return Math.round((date - startOfToday()) / 86400000);
   }
-  /* Decorates an item with computed deadline info (cached on first use). */
   function withDeadline(item) {
     if (item._dl !== undefined) return item;
     const dt = nextDeadline(item.deadline);
@@ -59,7 +51,6 @@
     const list = (item.badges || []).slice();
     list.unshift(item.free ? "free" : "paid");
     if (withDeadline(item)._soon) list.push("closing-soon");
-    // de-dupe while preserving order
     const seen = {};
     return list.filter((b) => (seen[b] ? false : (seen[b] = true)))
       .map((b) => {
@@ -88,7 +79,6 @@
     return `<span>📅 ${esc(item.timing)}</span>`;
   }
 
-  /* Public: renders one resource card. */
   C.cardHTML = function (item) {
     withDeadline(item);
     const fields = fieldTagsHTML(item);
@@ -113,18 +103,15 @@
     </article>`;
   };
 
-  /* ---------- Home: featured opportunities ---------- */
   C.renderFeatured = function (selector, count = 3) {
     const el = document.querySelector(selector);
     if (!el) return;
     const free = C.ALL.filter((x) => x.free);
-    // Prefer free items closing soon, then other free standouts.
     const soon = free.filter((x) => C.isClosingSoon(x));
     const featured = soon.concat(free.filter((x) => !C.isClosingSoon(x))).slice(0, count);
     el.innerHTML = featured.map(C.cardHTML).join("");
   };
 
-  /* ---------- Explore: the unified browser ---------- */
   C.initExplorer = function () {
     const grid = document.getElementById("explore-grid");
     if (!grid) return;
@@ -145,12 +132,11 @@
         return items.slice().sort((a, b) => {
           const da = C.daysUntilDeadline(a), db = C.daysUntilDeadline(b);
           if (da == null && db == null) return 0;
-          if (da == null) return 1;       // rolling/varies goes last
+          if (da == null) return 1;
           if (db == null) return -1;
           return da - db;
         });
       }
-      // "featured": closing-soon first, otherwise original data order
       return items.slice().sort((a, b) => (C.isClosingSoon(b) ? 1 : 0) - (C.isClosingSoon(a) ? 1 : 0));
     }
 
@@ -173,7 +159,6 @@
       grid.innerHTML = items.map(C.cardHTML).join("");
     }
 
-    /* Build the discipline (field) chip group from CVSTEM.FIELDS. */
     const fieldChips = document.getElementById("field-chips");
     if (fieldChips) {
       fieldChips.innerHTML =
@@ -182,7 +167,6 @@
           `<button class="chip" data-value="${f.key}" aria-pressed="false">${esc(f.label)}</button>`).join("");
     }
 
-    /* Chip groups (type + field) via event delegation */
     document.querySelectorAll(".chips").forEach((group) => {
       const key = group.dataset.filter;
       if (!key) return;
@@ -200,7 +184,6 @@
       });
     });
 
-    /* County dropdown */
     const county = document.getElementById("county-select");
     if (county) {
       county.innerHTML =
@@ -209,19 +192,16 @@
       county.addEventListener("change", () => { state.county = county.value; render(); });
     }
 
-    /* Grade dropdown */
     const grade = document.getElementById("grade-select");
     if (grade) {
       grade.addEventListener("change", () => { state.grade = grade.value; render(); });
     }
 
-    /* Sort dropdown */
     const sort = document.getElementById("sort-select");
     if (sort) {
       sort.addEventListener("change", () => { state.sort = sort.value; render(); });
     }
 
-    /* Toggles: free only + closing soon */
     const freeToggle = document.getElementById("free-toggle");
     if (freeToggle) {
       freeToggle.addEventListener("change", () => { state.free = freeToggle.checked; render(); });
@@ -231,13 +211,11 @@
       soonToggle.addEventListener("change", () => { state.soon = soonToggle.checked; render(); });
     }
 
-    /* Search */
     const search = document.getElementById("explore-search");
     if (search) {
       search.addEventListener("input", () => { state.q = search.value.trim().toLowerCase(); render(); });
     }
 
-    /* Deep links: /explore?type=scholarship&county=Fresno&field=civil&free=1&soon=1 */
     const params = new URLSearchParams(location.search);
     const preType = params.get("type");
     if (preType) {
@@ -259,22 +237,19 @@
     render();
   };
 
-  /* ---------- Inject live counts (stats + contributor counter) ---------- */
   C.injectCounts = function () {
     document.querySelectorAll("[data-count-key]").forEach((el) => {
       const v = C.COUNTS[el.dataset.countKey];
       if (v == null) return;
-      el.dataset.countTo = String(v);          // main.js animates this
+      el.dataset.countTo = String(v);
       if (!el.textContent.trim()) el.textContent = String(v);
     });
-    // Plain text counters (no animation)
     document.querySelectorAll("[data-count-text]").forEach((el) => {
       const v = C.COUNTS[el.dataset.countText];
       if (v != null) el.textContent = String(v);
     });
   };
 
-  /* ---------- Tips grid ---------- */
   C.renderTips = function (selector) {
     const el = document.querySelector(selector);
     if (!el) return;
@@ -285,7 +260,6 @@
     </article>`).join("");
   };
 
-  /* ---------- County pills (About) ---------- */
   C.renderCounties = function (selector) {
     const el = document.querySelector(selector);
     if (!el) return;
@@ -293,7 +267,6 @@
       `<a class="county-pill" href="/explore?county=${encodeURIComponent(c)}">${c}</a>`).join("");
   };
 
-  /* ---------- Discipline pills (About / Home) ---------- */
   C.renderFieldPills = function (selector) {
     const el = document.querySelector(selector);
     if (!el) return;
@@ -301,11 +274,10 @@
       `<a class="county-pill" href="/explore?field=${encodeURIComponent(f.key)}">${f.label}</a>`).join("");
   };
 
-  /* ---------- Scrolling county band (kinetic) ---------- */
   C.renderCountyMarquee = function (selector) {
     const el = document.querySelector(selector);
     if (!el) return;
     const once = C.COUNTIES.map((c) => `<span class="item">${c}</span>`).join("");
-    el.innerHTML = once + once; // duplicated set -> seamless -50% loop
+    el.innerHTML = once + once;
   };
 })();

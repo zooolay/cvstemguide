@@ -1,45 +1,7 @@
-/* ============================================================
-   CV STEM Guide - Data
-   Single source of truth for every resource. Loaded as a plain
-   script (no build step); attaches to the global `CVSTEM`.
-
-   ------------------------------------------------------------
-   HOW TO ADD A RESOURCE
-   ------------------------------------------------------------
-   Append an object to PROGRAMS, SCHOLARSHIPS, or COMPETITIONS.
-   Every object uses the same shape:
-
-   {
-     id:       "kebab-case-unique-id",        // stable, never reuse
-     title:    "Official program name",
-     org:      "Organization that runs it",
-     desc:     "2-3 sentences. What it is + why it matters.",
-     fields:   ["mechanical","aerospace"],     // one or more FIELD keys (below)
-     gradeMin: 9, gradeMax: 12,                 // numeric grade range (6-12)
-     grades:   "9 to 12",                       // human-readable grade label
-     counties: "all"  OR  ["Fresno","Kern"],    // "all" = open statewide/nationally
-     cost:     "Free"  OR  "$250"  etc.,         // human-readable cost label
-     free:     true | false,                     // drives the "Free only" filter + badge
-     deadline: "02-06" | null,                   // RECURRING month-day, or null if rolling/varies
-                                                 //   -> the site computes the *next* occurrence
-                                                 //      automatically, so it never goes stale.
-     timing:   "Summer (June-August)",           // human-readable window
-     link:     "https://official-site...",       // ALWAYS the official page
-     icon:     "🚀",
-     badges:   ["online"]                         // optional: residential | online | competition | scholarship
-   }
-
-   Deadlines are approximate and recurring; students should always
-   confirm the exact current-cycle date on the official site.
-   ============================================================ */
 window.CVSTEM = window.CVSTEM || {};
 
-/* The 18 Central Valley counties this guide serves. */
 CVSTEM.COUNTIES = ["Butte","Colusa","Fresno","Glenn","Kern","Kings","Madera","Merced","Placer","Sacramento","San Joaquin","Shasta","Stanislaus","Sutter","Tehama","Tulare","Yolo","Yuba"];
 
-/* Engineering / STEM disciplines used for filtering. "general" is a
-   catch-all for broad, multi-discipline programs. The other 11 keys are
-   the engineering fields the guide explicitly covers. */
 CVSTEM.FIELDS = [
   { key: "mechanical",    label: "Mechanical" },
   { key: "materials",     label: "Materials" },
@@ -55,9 +17,6 @@ CVSTEM.FIELDS = [
   { key: "general",       label: "General / Multi" },
 ];
 
-/* ============================================================
-   PROGRAMS
-   ============================================================ */
 CVSTEM.PROGRAMS = [
   { id:"cosmos", icon:"🔬", title:"COSMOS: California State Summer School for Math & Science", org:"University of California",
     desc:"A four-week residential program at UC campuses including UC Merced, UC Davis, and UC Irvine. Students work directly with university faculty on real STEM research across clusters spanning engineering, computer science, biology, and physics. One of California's most respected pre-college programs.",
@@ -228,9 +187,6 @@ CVSTEM.PROGRAMS = [
     link:"https://www.admissions.caltech.edu/visit/visit-campus/fall-fly-in-program-caltech-up-close", badges:[], counties:"all" },
 ];
 
-/* ============================================================
-   SCHOLARSHIPS
-   ============================================================ */
 CVSTEM.SCHOLARSHIPS = [
   { id:"pge-better-together", icon:"💡", title:"Better Together STEM Scholarship", org:"PG&E Foundation",
     desc:"Awards of $2,500, $5,000, or $10,000 for students in PG&E's Northern and Central California service area pursuing engineering, computer science, cybersecurity, environmental science, math, or physics. Built for exactly this region — a top scholarship for Valley students.",
@@ -365,9 +321,6 @@ CVSTEM.SCHOLARSHIPS = [
     link:"https://www.thrivescholars.org/programs/six-year-program/", badges:["scholarship"], counties:"all" },
 ];
 
-/* ============================================================
-   COMPETITIONS
-   ============================================================ */
 CVSTEM.COMPETITIONS = [
   { id:"first-robotics", icon:"🤖", title:"FIRST Robotics Competition", org:"FIRST",
     desc:"The most respected high school engineering competition in the country. Teams build full-size robots over six weeks and compete at regional and national events, with active teams near Modesto and Stockton. Starting or leading a team is one of the strongest possible engineering extracurriculars.",
@@ -472,9 +425,6 @@ CVSTEM.COMPETITIONS = [
     link:"https://lemelson.mit.edu/inventeams", badges:["competition"], counties:"all" },
 ];
 
-/* ============================================================
-   TIPS (About page)
-   ============================================================ */
 CVSTEM.TIPS = [
   { num:"01", title:"Depth beats breadth", text:"One program where you actually led something beats five where you just showed up. Admissions officers look for sustained commitment and genuine impact, not a long roster of club memberships with nothing behind them." },
   { num:"02", title:"Apply to the things that seem out of reach", text:"Programs like COSMOS, MITES, and SSP accept a small share of applicants. But Central Valley students are underrepresented in every one of them, and geographic diversity works in your favor. You will not know until you apply." },
@@ -484,21 +434,17 @@ CVSTEM.TIPS = [
   { num:"06", title:"Your location is an advantage", text:"The Central Valley is underrepresented at top universities, and UC schools know it. Frame your background honestly: a student who grew up in an agricultural region with limited STEM access and built something anyway. That is your story." },
 ];
 
-/* ============================================================
-   Unified list for the Explore page — adds a `type` to every record.
-   ============================================================ */
 CVSTEM.ALL = [
   ...CVSTEM.PROGRAMS.map(x => ({ ...x, type: "Program" })),
   ...CVSTEM.SCHOLARSHIPS.map(x => ({ ...x, type: "Scholarship" })),
   ...CVSTEM.COMPETITIONS.map(x => ({ ...x, type: "Competition" })),
 ];
 
-/* Quick totals other scripts can read without recomputing. */
 CVSTEM.COUNTS = {
   total:         CVSTEM.ALL.length,
   programs:      CVSTEM.PROGRAMS.length,
   scholarships:  CVSTEM.SCHOLARSHIPS.length,
   competitions:  CVSTEM.COMPETITIONS.length,
-  fields:        CVSTEM.FIELDS.filter(f => f.key !== "general").length, // 11 engineering disciplines
+  fields:        CVSTEM.FIELDS.filter(f => f.key !== "general").length,
   counties:      CVSTEM.COUNTIES.length,
 };
