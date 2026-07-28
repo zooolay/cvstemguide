@@ -1,0 +1,52 @@
+{
+  "generatedAt": "2026-07-28T08:08:55.166Z",
+  "candidates": [],
+  "skipped": [],
+  "leads": [
+    {
+      "url": "https://ccbm.ucmerced.edu/outreach/ccbm-summer-programs-k-12",
+      "title": "CCBM Summer Programs for K-12 | Center for Cellular and Biomolecular Machines",
+      "anchorText": "NSF CREST Center for Cellular and Biomolecular Machines (CCBM)",
+      "source": {
+        "name": "UC Merced",
+        "domain": "ucmerced.edu"
+      },
+      "foundOn": "https://naturalsciences.ucmerced.edu/content/summer-stem-outreach-programs",
+      "foundAt": "2026-07-28",
+      "linkVerified": {
+        "status": 200,
+        "verdict": "ok"
+      }
+    },
+    {
+      "url": "https://www.deltacollege.edu/academics/pre-college",
+      "title": "Pre-College - Delta College",
+      "anchorText": "For High School Students",
+      "source": {
+        "name": "San Joaquin Delta College",
+        "domain": "deltacollege.edu"
+      },
+      "foundOn": "https://deltacollege.edu/academics/areas-interest/science-engineering-computer-science-math",
+      "foundAt": "2026-07-28",
+      "linkVerified": {
+        "status": 200,
+        "verdict": "ok"
+      }
+    },
+    {
+      "url": "https://www.fresnocitycollege.edu/admissions-aid/admissions-and-records-office/admissions/new-student-services.html",
+      "title": "Welcome Center and Outreach | Fresno City College",
+      "anchorText": "Welcome Center &amp; Outreach",
+      "source": {
+        "name": "Fresno City College",
+        "domain": "fresnocitycollege.edu"
+      },
+      "foundOn": "https://www.fresnocitycollege.edu/academics/divisions/math-science-and-engineering-division/engineering.html",
+      "foundAt": "2026-07-28",
+      "linkVerified": {
+        "status": 200,
+        "verdict": "ok"
+      }
+    }
+  ]
+}

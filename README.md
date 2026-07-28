@@ -83,9 +83,18 @@ sitemap.xml                            Search-engine sitemap
 robots.txt                             Crawler directives -> sitemap
 /styles/           base.css            Design tokens, reset, typography
                    components.css      Nav, hero, cards, explorer, placeholders, footer
-/scripts/          data.js             All resources (single source of truth)
+/data/             listings.json       All resources (SINGLE SOURCE OF TRUTH)
+                   archive.json        Expired + rejected listings (never hard-deleted)
+                   pending-review.json Discovery candidates awaiting approval
+                   sources.json        Trusted sites the weekly job may search
+/scripts/          data.js             GENERATED from data/listings.json — do not edit
                    ui.js               Card rendering, deadlines + the Explorer
                    main.js             Nav, mobile menu, counters, scroll animations
+/tools/            build-data.mjs      Regenerates scripts/data.js
+                   archive-expired.mjs Sweeps expired listings into archive.json
+                   discover.mjs        Weekly Claude-powered listing discovery
+                   approve.mjs         Review + promote discovery candidates
+/.github/workflows/                    Daily archive sweep, weekly discovery PR
 /assets/           favicon.svg
                    og-cover.svg        Social-share (Open Graph) image
 CNAME                                  Custom domain
@@ -93,17 +102,27 @@ CNAME                                  Custom domain
 
 ### Adding or editing a resource
 
-Every resource is one object in [`scripts/data.js`](scripts/data.js) inside `PROGRAMS`,
-`SCHOLARSHIPS`, or `COMPETITIONS`. The file's header comment documents the full object shape:
-`fields` (engineering disciplines), `gradeMin`/`gradeMax`, `counties`, `cost`/`free`,
-a recurring `deadline` (`"MM-DD"`, which the site turns into the next upcoming date automatically),
-and the official `link`. The homepage stats and the contributor counter are computed from this file,
-so they update themselves the moment you add a listing.
+Resources live in [`data/listings.json`](data/listings.json) under `programs`,
+`scholarships`, or `competitions`. Each is one object: `fields` (engineering disciplines),
+`gradeMin`/`gradeMax`, `counties`, `cost`/`free`, a `deadline`, and the official `link`.
+
+After editing, regenerate the file the site actually loads:
+
+```bash
+node tools/build-data.mjs
+```
+
+`scripts/data.js` is generated — **edits there will be overwritten.** The homepage stats
+and contributor counter are computed from the data, so they update themselves.
+
+Deadlines come in three flavours: `"MM-DD"` recurs annually and rolls forward on its own,
+`"YYYY-MM-DD"` is a one-time date that auto-archives once past, and `null` renders as
+"No fixed deadline". See [README-automation.md](README-automation.md) for the full
+automation setup, including the weekly discovery job.
 
 Pages use **clean, folder-based URLs** (`cvstemguide.com/about`, `/explore`, `/contribute`)
-served natively by GitHub Pages, with no router or redirects required. All resource data
-lives in [`scripts/data.js`](scripts/data.js); to add a program, scholarship, or
-competition, append an object there (or open an issue and it will be added for you).
+served natively by GitHub Pages, with no router or redirects required. To suggest a
+listing without touching code, open an issue and it will be added for you.
 
 ### Local preview
 

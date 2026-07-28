@@ -20,18 +20,32 @@
 
   const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
+  // Deadline semantics — must stay in sync with tools/lib/data-io.mjs
+  //   null         rolling / ongoing  → never expires, shows `timing` instead
+  //   "MM-DD"      recurring annually → rolls to next occurrence, never expires
+  //   "YYYY-MM-DD" one-time           → expires once passed (auto-archived by CI)
+  const RECURRING = /^\d{2}-\d{2}$/;
+  const ABSOLUTE = /^\d{4}-\d{2}-\d{2}$/;
+  const GRACE_DAYS = 14;
+
   function startOfToday() {
     const n = new Date();
     return new Date(n.getFullYear(), n.getMonth(), n.getDate());
   }
-  function nextDeadline(mmdd) {
-    if (!mmdd) return null;
-    const [m, d] = mmdd.split("-").map(Number);
-    if (!m || !d) return null;
+  function nextDeadline(deadline) {
+    if (!deadline) return null;
     const today = startOfToday();
-    let dt = new Date(today.getFullYear(), m - 1, d);
-    if (dt < today) dt = new Date(today.getFullYear() + 1, m - 1, d);
-    return dt;
+    if (ABSOLUTE.test(deadline)) {
+      const [y, m, d] = deadline.split("-").map(Number);
+      return new Date(y, m - 1, d);
+    }
+    if (RECURRING.test(deadline)) {
+      const [m, d] = deadline.split("-").map(Number);
+      let dt = new Date(today.getFullYear(), m - 1, d);
+      if (dt < today) dt = new Date(today.getFullYear() + 1, m - 1, d);
+      return dt;
+    }
+    return null;
   }
   function daysUntil(date) {
     return Math.round((date - startOfToday()) / 86400000);
@@ -40,12 +54,38 @@
     if (item._dl !== undefined) return item;
     const dt = nextDeadline(item.deadline);
     item._dl = dt;
+    item._oneTime = ABSOLUTE.test(item.deadline || "");
     item._dlDays = dt ? daysUntil(dt) : null;
     item._soon = dt ? (item._dlDays >= 0 && item._dlDays <= 30) : false;
     return item;
   }
   C.daysUntilDeadline = (item) => withDeadline(item)._dlDays;
   C.isClosingSoon = (item) => withDeadline(item)._soon;
+
+  // Only one-time dates and explicit retireOn can expire; recurring ones roll over.
+  C.isExpired = function (item) {
+    if (item.retireOn && ABSOLUTE.test(item.retireOn)) {
+      const dt = nextDeadline(item.retireOn);
+      if (dt && daysUntil(dt) < 0) return true;
+    }
+    withDeadline(item);
+    return item._oneTime && item._dl && item._dlDays < -GRACE_DAYS;
+  };
+
+  // Defensive second layer: CI archives expired listings weekly, but this keeps
+  // anything stale off the page in between runs. Counts are recomputed to match.
+  (function pruneExpired() {
+    const before = C.ALL.length;
+    C.ALL = C.ALL.filter((x) => !C.isExpired(x));
+    if (C.ALL.length === before) return;
+    const by = (t) => C.ALL.filter((x) => x.type === t).length;
+    C.COUNTS = Object.assign({}, C.COUNTS, {
+      total: C.ALL.length,
+      programs: by("Program"),
+      scholarships: by("Scholarship"),
+      competitions: by("Competition"),
+    });
+  })();
 
   function badgesHTML(item) {
     const list = (item.badges || []).slice();
@@ -74,9 +114,14 @@
       const rel = item._soon
         ? ` <strong class="soon-text">· ${item._dlDays === 0 ? "today" : "in " + item._dlDays + " day" + (item._dlDays === 1 ? "" : "s")}</strong>`
         : "";
-      return `<span>📅 Next deadline ~${lbl}${rel}</span>`;
+      // One-time dates are exact (show the year); recurring ones are approximate.
+      const text = item._oneTime
+        ? `Deadline ${lbl}, ${item._dl.getFullYear()}`
+        : `Next deadline ~${lbl}`;
+      return `<span>📅 ${text}${rel}</span>`;
     }
-    return `<span>📅 ${esc(item.timing)}</span>`;
+    // No fixed date — say so explicitly rather than leaving the slot ambiguous.
+    return `<span>📅 No fixed deadline${item.timing ? ` · ${esc(item.timing)}` : " — rolling / ongoing"}</span>`;
   }
 
   C.cardHTML = function (item) {
@@ -242,7 +287,10 @@
       const v = C.COUNTS[el.dataset.countKey];
       if (v == null) return;
       el.dataset.countTo = String(v);
-      if (!el.textContent.trim()) el.textContent = String(v);
+      // Always write the live value. The count-up animation overwrites this when
+      // it runs, but if it never fires (reduced motion, no IntersectionObserver)
+      // the markup's hard-coded fallback would otherwise be shown and go stale.
+      el.textContent = String(v) + (el.dataset.suffix || "");
     });
     document.querySelectorAll("[data-count-text]").forEach((el) => {
       const v = C.COUNTS[el.dataset.countText];

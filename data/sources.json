@@ -1,0 +1,25 @@
+{
+  "_comment": "Curated trusted sources for the weekly scan (tools/scan-sources.mjs, free) and the optional paid job (tools/discover.mjs). Only these domains are visited. Add or remove entries freely — both jobs read this file at runtime.",
+  "_watch": "Optional hub pages to crawl for new sub-pages. If omitted, the scanner falls back to the links of listings you already have on that domain. Every URL here has been checked to return 200.",
+  "sources": [
+    { "name": "UC Merced", "domain": "ucmerced.edu", "focus": "pre-college STEM outreach, summer academies, high school research internships" },
+    { "name": "Fresno State", "domain": "fresnostate.edu", "focus": "Lyles College of Engineering summer camps and high school outreach" },
+    { "name": "Stanislaus State", "domain": "csustan.edu", "focus": "STEM outreach and summer programs for high school students",
+      "watch": ["https://www.csustan.edu/STEM-success", "https://www.csustan.edu/science", "https://www.csustan.edu/science/programs/summer-camp"] },
+    { "name": "Sacramento State", "domain": "csus.edu", "focus": "engineering and computer science pre-college programs" },
+    { "name": "UC Davis", "domain": "ucdavis.edu", "focus": "Young Scholars Program, COSMOS, pre-college research" },
+    { "name": "Modesto Junior College", "domain": "mjc.edu", "focus": "dual enrollment and STEM pathways for high schoolers" },
+    { "name": "San Joaquin Delta College", "domain": "deltacollege.edu", "focus": "dual enrollment and STEM pathway programs" },
+    { "name": "Merced College", "domain": "mccd.edu", "focus": "dual enrollment and engineering pathways" },
+    { "name": "Fresno City College", "domain": "fresnocitycollege.edu", "focus": "dual enrollment and STEM pathways" },
+    { "name": "Bakersfield College", "domain": "bakersfieldcollege.edu", "focus": "dual enrollment and engineering pathways" },
+    { "name": "COSMOS", "domain": "cosmos-ucop.ucdavis.edu", "focus": "California State Summer School for Math and Science admissions and deadlines" },
+    { "name": "MIT MITES", "domain": "mites.mit.edu", "focus": "MITES Summer, Semester, and Saturdays for underrepresented students" },
+    { "name": "SHPE", "domain": "shpe.org", "focus": "Society of Hispanic Professional Engineers scholarships and pre-college programs" },
+    { "name": "NSBE", "domain": "nsbe.org", "focus": "National Society of Black Engineers pre-college initiatives (note: SEEK itself is grades 3-8)",
+      "watch": ["https://nsbe.org/programs/", "https://nsbe.org/pci/"] },
+    { "name": "SWE", "domain": "swe.org", "focus": "Society of Women Engineers scholarships and outreach for high school students" },
+    { "name": "Lawrence Livermore National Laboratory", "domain": "llnl.gov", "focus": "high school internships and STEM education programs" },
+    { "name": "Sandia National Laboratories", "domain": "sandia.gov", "focus": "high school internships and STEM outreach (California site in Livermore)" }
+  ]
+}

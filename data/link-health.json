@@ -1,0 +1,541 @@
+{
+  "checkedAt": "2026-07-28T08:08:31.057Z",
+  "links": {
+    "https://cosmos-ucop.ucdavis.edu/": {
+      "title": "COSMOS: California State Summer School for Math & Science",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://naturalsciences.ucmerced.edu/content/summer-stem-outreach-programs": {
+      "title": "UC Merced Summer STEM Outreach Programs",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://calteach.ucmerced.edu/bobcat-summer-stem-academy": {
+      "title": "Bobcat Summer STEM Academy",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://news.ucmerced.edu/news/2026/high-school-students-invited-apply-free-computer-science-internship": {
+      "title": "UC Merced High School Computer Science Internship",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://engineering.ucmerced.edu/": {
+      "title": "UC Merced Faculty Research (Cold Email)",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://engineering.fresnostate.edu/young-minds-explore/": {
+      "title": "Lyles College of Engineering Summer Camps",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://education.ucdavis.edu/young-scholars-program": {
+      "title": "UC Davis Young Scholars Program",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://c-stem.ucdavis.edu/": {
+      "title": "UC Davis C-STEM (Coding & Robotics)",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://cce.csus.edu/summer-youth-academies": {
+      "title": "Summer Youth Academies",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://mesa.ucop.edu/": {
+      "title": "MESA Schools Program",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://www.llnl.gov/join-our-team/careers/student-internship-veteran-programs": {
+      "title": "LLNL Summer STEM Programs (SAGE & Biotech)",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://livermorelabfoundation.org/": {
+      "title": "High School Summer Internship Program",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://www.sandia.gov/careers/students-postdocs/internships/": {
+      "title": "Sandia National Labs Student Internships",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://www.asmfoundation.org/students/materials-camps/": {
+      "title": "ASM Materials Camp",
+      "lastStatus": 403,
+      "lastVerdict": "blocked",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": null
+    },
+    "https://www.acs.org/funding/scholarships-fellowships/project-seed.html": {
+      "title": "ACS Project SEED",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://www.acementor.org/students/students-overview/": {
+      "title": "ACE Mentor Program",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://mites.mit.edu/discover-mites/mites-summer/": {
+      "title": "MITES Summer",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://bwsi.mit.edu/": {
+      "title": "Beaver Works Summer Institute",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://summerscience.org/": {
+      "title": "Summer Science Program",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://smysp.spcs.stanford.edu/": {
+      "title": "Stanford Medical Youth Science Program",
+      "lastStatus": 403,
+      "lastVerdict": "blocked",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": null
+    },
+    "https://girlswhocode.com/programs": {
+      "title": "Girls Who Code Summer Program",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://summercamps.erau.edu/": {
+      "title": "Embry-Riddle Summer Programs",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://www.mjc.edu/outreach/dualenrollment.html": {
+      "title": "Modesto Junior College Dual Enrollment",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://www.fresnocitycollege.edu/academics/divisions/math-science-and-engineering-division/engineering.html": {
+      "title": "Fresno City College Engineering Transfer",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://www.bakersfieldcollege.edu/academics/pathways/stem/engineering.html": {
+      "title": "Bakersfield College Engineering & MESA",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://deltacollege.edu/academics/areas-interest/science-engineering-computer-science-math": {
+      "title": "San Joaquin Delta College Engineering",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://catalog.mccd.edu/pages/vcnNUlYUI9bbHdBfdZA2": {
+      "title": "Merced College Engineering Transfer",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://www.admissions.caltech.edu/visit/visit-campus/fall-fly-in-program-caltech-up-close": {
+      "title": "Caltech Up Close (Fall Fly-In)",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://www.pge.com/en/about/educational-resources/grants-and-scholarships.html": {
+      "title": "Better Together STEM Scholarship",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://www.edison.com/community/edison-scholars": {
+      "title": "Edison Scholars Program",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://www.centralvalleycf.org/scholarships": {
+      "title": "Central Valley Community Foundation Scholarships",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://www.stanislauscf.org/scholarships": {
+      "title": "Stanislaus Community Foundation Scholarships",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://sanjoaquincf.org/scholarships/": {
+      "title": "San Joaquin Community Foundation Scholarships",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://www.centralvalleyscholars.org/": {
+      "title": "Central Valley Scholars",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://shpe.org/engage/programs/scholarshpe/": {
+      "title": "SHPE Scholarship Program",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://swe.org/apply-for-a-swe-scholarship/": {
+      "title": "Society of Women Engineers Scholarships",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://aises.org/scholarships/": {
+      "title": "AISES Scholarships",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://www.ans.org/scholarships/": {
+      "title": "American Nuclear Society Scholarships",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://www.hsf.net/scholarship": {
+      "title": "Hispanic Scholarship Fund",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://www.ffa.org/participate/grants-and-scholarships/": {
+      "title": "National FFA Scholarship Program",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://www.davidsongifted.org/gifted-programs/fellows-scholarship/": {
+      "title": "Davidson Fellows Scholarship",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://www.aspirations.org/": {
+      "title": "NCWIT Award for Aspirations in Computing",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://www.questbridge.org/high-school-students/college-prep-scholars": {
+      "title": "QuestBridge College Prep Scholars",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://www.questbridge.org/high-school-students/national-college-match": {
+      "title": "QuestBridge National College Match",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://www.thegatesscholarship.org/scholarship": {
+      "title": "The Gates Scholarship",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://www.jkcf.org/our-scholarships/": {
+      "title": "Jack Kent Cooke College Scholarship",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://www.coca-colascholarsfoundation.org/apply/": {
+      "title": "Coca-Cola Scholars Program",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://horatioalger.org/scholarships-and-services/undergraduate-scholarships/": {
+      "title": "Horatio Alger National & State Scholarships",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://coolidgescholars.org/": {
+      "title": "Coolidge Scholarship",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://www.thrivescholars.org/programs/six-year-program/": {
+      "title": "Thrive Scholars Six-Year Program",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://www.firstinspires.org/robotics/frc": {
+      "title": "FIRST Robotics Competition",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://www.soinc.org/": {
+      "title": "Science Olympiad",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://www.conradchallenge.org/": {
+      "title": "Conrad Challenge",
+      "lastStatus": "ERR_SSL_TLSV1_ALERT_INTERNAL_ERROR",
+      "lastVerdict": "error",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": null
+    },
+    "https://www.congressionalappchallenge.us/": {
+      "title": "Congressional App Challenge",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://www.nasa.gov/learning-resources/nasa-student-launch/": {
+      "title": "NASA Student Launch",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://www.futureengineers.org/nasatechrise": {
+      "title": "NASA TechRise Student Challenge",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://realworlddesignchallenge.org/": {
+      "title": "Real World Design Challenge",
+      "lastStatus": "ENOTFOUND",
+      "lastVerdict": "error",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": null
+    },
+    "https://futurecity.org/": {
+      "title": "Future City Competition",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://envirothon.org/": {
+      "title": "NCF-Envirothon",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://www.ecybermission.com/": {
+      "title": "eCYBERMISSION",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://tsaweb.org/teams": {
+      "title": "TSA TEAMS Competition",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://www.uscyberpatriot.org/": {
+      "title": "CyberPatriot",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://www.jshs.org/": {
+      "title": "Junior Science & Humanities Symposium",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://hosa.org/": {
+      "title": "HOSA Future Health Professionals",
+      "lastStatus": "UNABLE_TO_GET_ISSUER_CERT_LOCALLY",
+      "lastVerdict": "error",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": null
+    },
+    "https://www.societyforscience.org/regeneron-sts/": {
+      "title": "Regeneron Science Talent Search",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://www.aiaa.org/get-involved/students-educators": {
+      "title": "AIAA Foundation Student Competitions",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    },
+    "https://lemelson.mit.edu/inventeams": {
+      "title": "Lemelson-MIT InvenTeams",
+      "lastStatus": 200,
+      "lastVerdict": "ok",
+      "lastCheckedAt": "2026-07-28",
+      "consecutiveGone": 0,
+      "lastOkAt": "2026-07-28"
+    }
+  }
+}
